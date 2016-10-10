@@ -1,0 +1,36 @@
+sudo: false
+language: android
+jdk:
+  - oraclejdk8
+android:
+  components:
+  - tools # to get the new `repository-11.xml`
+  - tools # to install Android SDK tools 25.1.x
+  - platform-tools
+  - build-tools-24.0.2
+  - android-24
+  - extra-google-google_play_services
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-24
+  - extra-android-support
+  - add-on
+  - extra
+branches:
+  only:
+  - master
+  - develop
+  - /^release/.*$/
+  - /^hotfix/.*$/
+script: "./gradlew ciBuild"
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+notifications:
+  slack:
+    rooms:
+      secure: NqU75qhZatzbCfjzM8MgTo0EyQiq+aYywzWKstu7xfrHLm4gqNDMmyXK8qlbxq0PXMMztdjF+s+HBC+DAVmrSm+yLFUe4nD+XdkibiMi9CfzpDspPfO3pJdeDLkk0EWe9v9bOt7SjPULQmQ5T+YbZgQSq7goRQSGJjg9VXwXJWM=
+after_failure: "cat /home/travis/build/door2door-io/mobile-analytics-android/lib/build/outputs/lint-results-debug.xml"

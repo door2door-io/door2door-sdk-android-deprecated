@@ -1,0 +1,6 @@
+task ciBuild(dependsOn: getListOfTasks())
+
+def getListOfTasks() {
+    def ciTasks = ['artifactoryPublish']
+    return ciTasks
+}

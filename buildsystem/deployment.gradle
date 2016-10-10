@@ -1,0 +1,32 @@
+apply plugin: "com.jfrog.artifactory"
+apply plugin: 'maven-publish'
+
+artifactory {
+    contextUrl = rootProject.artifactoryUrl
+    publish {
+        repository {
+            repoKey = rootProject.computedVersion.endsWith('SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local'
+            username = rootProject.artifactoryUser
+            password = rootProject.artifactoryPassword
+            maven = true
+        }
+        defaults {
+            publishArtifacts = true
+            publications('aar')
+            publishIvy = false
+        }
+    }
+}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId = project.groupId
+            artifactId project.artifactId
+            version = rootProject.computedVersion
+            artifact "${project.buildDir}/outputs/aar/${project.name}-release.aar"
+        }
+    }
+}
+
+artifactoryPublish.dependsOn build
