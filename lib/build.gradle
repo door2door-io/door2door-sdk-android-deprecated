@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply from: '../buildsystem/deployment.gradle'
 apply from: '../buildsystem/ci.gradle'
+apply from: '../buildsystem/coverage.gradle'
 
 android {
     compileSdkVersion 24
@@ -20,8 +21,9 @@ android {
     }
 }
 
-
 dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.5.2'
 }
 
 
