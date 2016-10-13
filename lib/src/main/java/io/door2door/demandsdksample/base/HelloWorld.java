@@ -7,6 +7,7 @@ public class HelloWorld {
 
     /**
      * Example method.
+     *
      * @return example value
      */
     public String getHelloWorld() {
