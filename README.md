@@ -1,5 +1,6 @@
 # mobile-analytics-android 
 [![Build Status](https://travis-ci.com/door2door-io/mobile-analytics-android.svg?token=pjx3zDtzXuU6uwdz9wez&branch=develop)](https://travis-ci.com/door2door-io/mobile-analytics-android)
+[![Coverage Status](https://coveralls.io/repos/github/door2door-io/mobile-analytics-android/badge.svg?t=v8nLRC)](https://coveralls.io/github/door2door-io/mobile-analytics-android)
 
 An Android SDK for using the Door2Door mobility analytics.
 
