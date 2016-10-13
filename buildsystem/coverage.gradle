@@ -1,4 +1,5 @@
 apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 jacoco {
     toolVersion = "0.7.2.201409121644"
@@ -33,4 +34,29 @@ project.afterEvaluate {
                 html.enabled = true
             }
         }
+}
+
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'testDebugUnitTestCoverage'
+    onlyIf { isCorrectBranch() && shouldUpload() }
+}
+
+def isCorrectBranch() {
+    def workingBranch = System.getenv("TRAVIS_BRANCH")
+    workingBranch.equals("develop")
+}
+
+def shouldUpload() {
+    def pullRequestVariable = System.getenv("TRAVIS_PULL_REQUEST")
+    if (pullRequestVariable == null) {
+        false
+    } else if (pullRequestVariable.equals("false")) {
+        true
+    } else {
+        false
+    }
 }
