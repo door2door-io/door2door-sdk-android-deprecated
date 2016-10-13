@@ -5,7 +5,7 @@ jacoco {
 }
 
 project.afterEvaluate {
-        def testTaskName = "test"
+        def testTaskName = "testDebugUnitTest"
 
         tasks.create(name: "${testTaskName}Coverage", type: JacocoReport, dependsOn: "$testTaskName") {
             group = "reporting"
