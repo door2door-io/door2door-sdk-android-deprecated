@@ -15,7 +15,6 @@ public class ModelMapper {
      * @return the {@link EventRequest} result.
      */
     public EventRequest mapEventToEventRequest(Event event) {
-        EventRequest eventRequest = new EventRequest();
-        return eventRequest;
+        return new EventRequest();
     }
 }

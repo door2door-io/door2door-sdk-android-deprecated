@@ -43,15 +43,15 @@ public class MobilityAnalyticsTest {
     }
 
     /**
-     * MobilityAnalytics class with injected test dependencies
+     * MobilityAnalytics class with injected test dependencies.
      */
     private class TestMobilityAnalytics extends MobilityAnalytics {
 
         /**
          * Constructor.
          *
-         * @param initializationParameters a wrapper object for all the parameters that can be set to
-         *                                 the SDK.
+         * @param initializationParameters a wrapper object for all the parameters that can be set
+         *                                 to the SDK.
          */
         TestMobilityAnalytics(InitializationParameters initializationParameters) {
             super(initializationParameters);
