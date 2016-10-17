@@ -6,5 +6,4 @@
 
 <suppressions>
     <suppress files=".*Test.java" checks="JavadocMethod"/>
-    <suppress files=".*Test.java" checks="JavadocType"/>
 </suppressions>
