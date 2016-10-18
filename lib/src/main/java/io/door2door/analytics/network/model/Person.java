@@ -1,4 +1,4 @@
-package io.door2door.analytics.data.model;
+package io.door2door.analytics.network.model;
 
 /**
  * Network model for a person.

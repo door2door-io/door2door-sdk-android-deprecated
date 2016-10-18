@@ -1,7 +1,7 @@
-package io.door2door.analytics.data;
+package io.door2door.analytics.network;
 
-import io.door2door.analytics.data.model.BaseResponse;
-import io.door2door.analytics.data.model.EventRequest;
+import io.door2door.analytics.network.model.BaseResponse;
+import io.door2door.analytics.network.model.EventRequest;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
