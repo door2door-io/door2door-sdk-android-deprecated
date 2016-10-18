@@ -8,7 +8,7 @@ import io.door2door.analytics.mapper.dagger.MapperModule;
 import io.door2door.analytics.network.dagger.NetworkModule;
 
 /**
- * Util class for injecting preparing dagger components injecting dependencies.
+ * Util class for preparing dagger components and injecting dependencies.
  */
 public final class DaggerUtil {
 
