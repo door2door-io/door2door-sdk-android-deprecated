@@ -1,12 +1,12 @@
-package io.door2door.analytics.base;
+package io.door2door.analytics.api;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.base.model.Event;
-import io.door2door.analytics.base.model.InitializationParameters;
+import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.logger.Logger;
 

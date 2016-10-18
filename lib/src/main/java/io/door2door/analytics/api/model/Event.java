@@ -1,4 +1,4 @@
-package io.door2door.analytics.base.model;
+package io.door2door.analytics.api.model;
 
 /**
  * Base abstract class for all events that can be sent by the SDK.

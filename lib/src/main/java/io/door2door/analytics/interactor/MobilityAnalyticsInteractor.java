@@ -1,7 +1,7 @@
 package io.door2door.analytics.interactor;
 
 import io.door2door.analytics.network.HttpStack;
-import io.door2door.analytics.base.model.Event;
+import io.door2door.analytics.api.model.Event;
 
 /**
  * Interactor class for the mobility analytics.

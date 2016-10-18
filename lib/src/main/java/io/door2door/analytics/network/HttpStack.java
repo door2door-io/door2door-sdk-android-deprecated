@@ -1,6 +1,6 @@
 package io.door2door.analytics.network;
 
-import io.door2door.analytics.base.model.Event;
+import io.door2door.analytics.api.model.Event;
 import io.door2door.analytics.network.model.EventRequest;
 import io.door2door.analytics.mapper.ModelMapper;
 

@@ -4,7 +4,7 @@ package io.door2door.analytics.base.dagger;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import io.door2door.analytics.base.MobilityAnalytics;
+import io.door2door.analytics.api.MobilityAnalytics;
 
 /**
  * Dagger component interface.

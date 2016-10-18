@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.base.model.Event;
+import io.door2door.analytics.api.model.Event;
 import io.door2door.analytics.network.HttpStack;
 
 import static org.mockito.Mockito.verify;

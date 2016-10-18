@@ -3,7 +3,7 @@ package io.door2door.analytics.mapper;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.door2door.analytics.base.model.Event;
+import io.door2door.analytics.api.model.Event;
 import io.door2door.analytics.network.model.EventRequest;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
