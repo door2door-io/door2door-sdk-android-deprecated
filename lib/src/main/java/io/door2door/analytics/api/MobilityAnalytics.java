@@ -5,8 +5,7 @@ import javax.inject.Inject;
 
 import io.door2door.analytics.api.model.Event;
 import io.door2door.analytics.api.model.InitializationParameters;
-import io.door2door.analytics.base.dagger.DaggerMobilityAnalyticsComponent;
-import io.door2door.analytics.base.dagger.MobilityAnalyticsModule;
+import io.door2door.analytics.base.dagger.DaggerUtil;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.logger.Logger;
 
@@ -37,12 +36,7 @@ public class MobilityAnalytics {
      *                                 dependencies.
      */
     protected void injectDependencies(InitializationParameters initializationParameters) {
-        MobilityAnalyticsModule mobilityAnalyticsModule = new MobilityAnalyticsModule();
-        mobilityAnalyticsModule.setInitializationParameters(initializationParameters);
-        DaggerMobilityAnalyticsComponent.builder()
-                .mobilityAnalyticsModule(mobilityAnalyticsModule)
-                .build()
-                .inject(this);
+        DaggerUtil.injectInMobilityAnalytics(this, initializationParameters);
     }
 
     /**
