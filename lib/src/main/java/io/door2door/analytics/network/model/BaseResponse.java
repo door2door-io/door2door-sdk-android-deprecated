@@ -1,4 +1,4 @@
-package io.door2door.analytics.data.model;
+package io.door2door.analytics.network.model;
 
 /**
  * Base model class for the responses coming from the backend.

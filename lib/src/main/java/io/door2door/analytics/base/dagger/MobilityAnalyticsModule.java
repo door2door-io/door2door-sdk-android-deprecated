@@ -5,10 +5,10 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.door2door.analytics.logger.Logger;
-import io.door2door.analytics.data.HttpStack;
-import io.door2door.analytics.data.RetrofitService;
+import io.door2door.analytics.network.HttpStack;
+import io.door2door.analytics.network.RetrofitService;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
-import io.door2door.analytics.base.model.InitializationParameters;
+import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.mapper.ModelMapper;
 import retrofit2.Retrofit;
 

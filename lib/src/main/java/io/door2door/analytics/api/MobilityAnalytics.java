@@ -1,10 +1,10 @@
-package io.door2door.analytics.base;
+package io.door2door.analytics.api;
 
 
 import javax.inject.Inject;
 
-import io.door2door.analytics.base.model.Event;
-import io.door2door.analytics.base.model.InitializationParameters;
+import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.dagger.DaggerMobilityAnalyticsComponent;
 import io.door2door.analytics.base.dagger.MobilityAnalyticsModule;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;

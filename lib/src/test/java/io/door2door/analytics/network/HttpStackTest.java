@@ -1,12 +1,12 @@
-package io.door2door.analytics.data;
+package io.door2door.analytics.network;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.base.model.Event;
-import io.door2door.analytics.data.model.EventRequest;
+import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.network.model.EventRequest;
 import io.door2door.analytics.mapper.ModelMapper;
 
 import static org.mockito.Mockito.verify;
