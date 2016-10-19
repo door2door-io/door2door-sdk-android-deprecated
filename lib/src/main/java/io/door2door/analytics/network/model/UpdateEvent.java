@@ -5,8 +5,17 @@ package io.door2door.analytics.network.model;
  */
 public class UpdateEvent extends BaseEvent {
 
+    private static final String TYPE = "update";
+
     private Person actor;
     private Place object;
+
+    /**
+     * Constructor.
+     */
+    public UpdateEvent() {
+        setType(TYPE);
+    }
 
     /**
      * @return the actor.

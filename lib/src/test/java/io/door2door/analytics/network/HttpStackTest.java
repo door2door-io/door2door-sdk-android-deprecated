@@ -41,7 +41,7 @@ public class HttpStackTest {
         httpStack.sendEvent(event);
 
         // then
-        verify(retrofitService).postEvent(null, eventRequest);
+        verify(retrofitService).postEvent(eventRequest);
     }
 
 }

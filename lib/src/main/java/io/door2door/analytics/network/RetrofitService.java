@@ -1,9 +1,7 @@
 package io.door2door.analytics.network;
 
-import io.door2door.analytics.network.model.BaseResponse;
 import io.door2door.analytics.network.model.EventRequest;
 import retrofit2.http.Body;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -15,11 +13,9 @@ public interface RetrofitService {
     /**
      * Send an event to the backend.
      *
-     * @param uuid         the UUID.
      * @param eventRequest the event request.
-     * @return response from the server.
+     * @return response from the server in an RX observable form.
      */
-    @POST("someUrl.com")
-    Observable<BaseResponse> postEvent(@Header("userId") String uuid,
-                                       @Body EventRequest eventRequest);
+    @POST("events")
+    Observable<Void> postEvent(@Body EventRequest eventRequest);
 }
