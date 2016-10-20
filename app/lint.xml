@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!--needed by retrofit, because in it okio.Okio is referencing java.nio.file, but it is not
+    included in Android-->
+    <issue id="InvalidPackage" severity="warning" />
+</lint>

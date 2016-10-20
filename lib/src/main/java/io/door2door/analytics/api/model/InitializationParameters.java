@@ -8,6 +8,17 @@ public class InitializationParameters {
     private boolean loggerEnabled;
 
     /**
+     * Constructor.
+     */
+    public InitializationParameters() {
+        initWithDefaultValues();
+    }
+
+    private void initWithDefaultValues() {
+        loggerEnabled = false;
+    }
+
+    /**
      * Getter for the flag for enabling logging from the library.
      *
      * @return {@code true} if logging should be enabled, {@code false} if not.

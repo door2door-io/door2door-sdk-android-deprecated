@@ -19,7 +19,7 @@ public class MapperModule {
      */
     @Provides
     @Singleton
-    public ModelMapper provideModelMapper() {
+    ModelMapper provideModelMapper() {
         return new ModelMapper();
     }
 }

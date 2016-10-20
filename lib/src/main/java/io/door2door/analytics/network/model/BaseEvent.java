@@ -1,6 +1,7 @@
 package io.door2door.analytics.network.model;
 
-import org.joda.time.DateTime;
+
+import java.util.Date;
 
 /**
  * Base class for all events that can be sent by the SDK.
@@ -8,7 +9,7 @@ import org.joda.time.DateTime;
 public class BaseEvent {
 
     private String type;
-    private DateTime timestamp;
+    private Date timestamp;
 
     /**
      * @return the type.
@@ -27,14 +28,14 @@ public class BaseEvent {
     /**
      * @return the timestamp.
      */
-    public DateTime getTimestamp() {
-        return timestamp;
+    public Date getTimestamp() {
+        return new Date(timestamp.getTime());
     }
 
     /**
      * @param timestamp the timestamp to set.
      */
-    public void setTimestamp(DateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = new Date(timestamp.getTime());
     }
 }

@@ -20,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        // needed by retrofit, because in it okio.Okio is referencing java.nio.file, but it is not
+        // included in Android
+        warning 'InvalidPackage'
+    }
 }
 
 dependencies {

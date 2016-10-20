@@ -22,7 +22,7 @@ public class LoggerModule {
      */
     @Provides
     @Singleton
-    public Logger provideLogger(InitializationParameters initializationParameters) {
+    Logger provideLogger(InitializationParameters initializationParameters) {
         return new Logger(initializationParameters.isLoggerEnabled());
     }
 }

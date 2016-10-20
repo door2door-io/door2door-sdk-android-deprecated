@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.base.DateFormattingHelper;
 
 /**
  * Dagger module for providing the base dependencies.
@@ -29,7 +30,18 @@ public class BaseModule {
      */
     @Provides
     @Singleton
-    public InitializationParameters provideInitializationParameters() {
+    InitializationParameters provideInitializationParameters() {
         return initializationParameters;
+    }
+
+    /**
+     * Dagger 2 provider method.
+     *
+     * @return the provided {@link DateFormattingHelper}
+     */
+    @Provides
+    @Singleton
+    DateFormattingHelper provideDateFormattingHelper() {
+        return new DateFormattingHelper();
     }
 }

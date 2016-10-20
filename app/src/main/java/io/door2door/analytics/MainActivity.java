@@ -1,13 +1,16 @@
 package io.door2door.analytics;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import io.door2door.analytics.api.MobilityAnalytics;
+import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.network.model.Person;
+import io.door2door.analytics.network.model.Place;
 import io.door2door.demandsdksample.R;
-import io.door2door.demandsdksample.base.HelloWorld;
 
 /**
  * Main activity class.
@@ -28,6 +31,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        // TODO 2016-10-17 zlatko: implement sending event
+        InitializationParameters initializationParameters = new InitializationParameters();
+        initializationParameters.setLoggerEnabled(true);
+        MobilityAnalytics mobilityAnalytics = new MobilityAnalytics(initializationParameters);
+        Event event = new Event();
+        Person actor = new Person();
+        actor.setDeviceId("xyz");
+        actor.setUuid("abc");
+        actor.setName("John");
+        actor.setPlatform("Android");
+        actor.setApplication("DVG");
+        actor.setVersion("v1.0.1");
+        event.setActor(actor);
+        Place object = new Place();
+        object.setLatitude(45.345);
+        object.setLongitude(89.3455);
+        object.setName("anotherStr");
+        event.setObject(object);
+        mobilityAnalytics.recordEvent(event);
     }
 }
