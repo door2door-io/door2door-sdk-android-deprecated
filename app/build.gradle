@@ -21,7 +21,8 @@ android {
         }
     }
     lintOptions {
-        // needed by moshi, because in it okio.Okio is referencing java.nio.file, but it is not included in Android
+        // needed by retrofit, because in it okio.Okio is referencing java.nio.file, but it is not
+        // included in Android
         warning 'InvalidPackage'
     }
 }

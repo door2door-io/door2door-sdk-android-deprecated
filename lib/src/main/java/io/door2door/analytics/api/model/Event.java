@@ -4,7 +4,7 @@ import io.door2door.analytics.network.model.Person;
 import io.door2door.analytics.network.model.Place;
 
 /**
- * Base abstract class for all events that can be sent by the SDK.
+ * Base class for all events that can be sent by the SDK.
  */
 public class Event {
 
