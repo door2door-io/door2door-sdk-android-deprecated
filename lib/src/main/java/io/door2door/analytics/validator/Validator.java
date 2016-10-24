@@ -16,7 +16,8 @@ public class Validator {
      */
     public void validate(Event event) throws ValidationException {
         if (event == null) {
-            throw new ValidationException("Event", "The root event object can't be null");
+            throw new ValidationException(Event.class.getSimpleName(), "The root event object "
+                    + "can't be null");
         }
     }
 }
