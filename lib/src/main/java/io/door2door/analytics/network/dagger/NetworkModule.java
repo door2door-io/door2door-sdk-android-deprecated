@@ -26,8 +26,10 @@ import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
 @Module
 public class NetworkModule {
 
+    // TODO 2016-10-25 zlatko: add API version
+    // TODO 2016-10-25 zlatko: add environment selector
     private static final String BASE_URL =
-            "https://r4on31jbrh.execute-api.eu-central-1.amazonaws.com/dev/";
+            "https://events-dev.d2di.net/v1/";
 
     private static final int TIMEOUT_SECONDS = 30;
 

@@ -1,7 +1,7 @@
 package io.door2door.analytics.validator;
 
 import io.door2door.analytics.api.exception.ValidationException;
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
 
 /**
  * Class responsible for checking the validity of the models.
@@ -14,10 +14,10 @@ public class Validator {
      * @param event the model to validate.
      * @throws ValidationException in case the validation fails.
      */
-    public void validate(Event event) throws ValidationException {
+    public void validate(CreateTripEvent event) throws ValidationException {
         if (event == null) {
-            throw new ValidationException(Event.class.getSimpleName(), "The root event object "
-                    + "can't be null");
+            throw new ValidationException(CreateTripEvent.class.getSimpleName(), "The root event "
+                    + "object can't be null");
         }
     }
 }

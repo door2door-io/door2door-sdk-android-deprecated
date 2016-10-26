@@ -1,6 +1,6 @@
 package io.door2door.analytics.interactor;
 
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import rx.Scheduler;
@@ -19,8 +19,9 @@ public class MobilityAnalyticsInteractor {
 
     /**
      * Constructor.
-     * @param httpStack the http stack to be used for sending the events.
-     * @param logger the logger for logging.
+     *
+     * @param httpStack           the http stack to be used for sending the events.
+     * @param logger              the logger for logging.
      * @param backgroundScheduler the rx scheduler for executing on a background thread.
      */
     public MobilityAnalyticsInteractor(HttpStack httpStack, Logger logger,
@@ -31,13 +32,13 @@ public class MobilityAnalyticsInteractor {
     }
 
     /**
-     * Sends the event to the backend.
+     * Send trip event to the backend.
      *
-     * @param event the event to send.
+     * @param event the event
      */
-    public void sendEvent(Event event) {
+    public void sendTripEvent(CreateTripEvent event) {
         // TODO 2016-10-18 zlatko: validate the event
-        httpStack.sendEvent(event)
+        httpStack.sendTripEvent(event)
                 .subscribeOn(backgroundScheduler)
                 .subscribe(new Action1<Void>() {
             @Override

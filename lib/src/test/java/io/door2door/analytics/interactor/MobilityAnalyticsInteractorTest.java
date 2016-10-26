@@ -8,12 +8,13 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -41,14 +42,14 @@ public class MobilityAnalyticsInteractorTest {
     @Test
     public void shouldSendEvent() {
         // given
-        Event event = new Event();
-        when(httpStack.sendEvent(event)).thenReturn(Observable.<Void>just(null));
+        CreateTripEvent event = mock(CreateTripEvent.class);
+        when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>just(null));
 
         // when
-        mobilityAnalyticsInteractor.sendEvent(event);
+        mobilityAnalyticsInteractor.sendTripEvent(event);
 
         // then
-        verify(httpStack).sendEvent(event);
+        verify(httpStack).sendTripEvent(event);
         verify(logger).d("MobilityAnalyticsInteractor",
                 "Event was sent to the backend successfully");
     }
@@ -56,15 +57,15 @@ public class MobilityAnalyticsInteractorTest {
     @Test
     public void shouldHandleErrorWhileSendingEvent() {
         // given
-        Event event = new Event();
+        CreateTripEvent event = mock(CreateTripEvent.class);
         RuntimeException exception = new RuntimeException();
-        when(httpStack.sendEvent(event)).thenReturn(Observable.<Void>error(exception));
+        when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>error(exception));
 
         // when
-        mobilityAnalyticsInteractor.sendEvent(event);
+        mobilityAnalyticsInteractor.sendTripEvent(event);
 
         // then
-        verify(httpStack).sendEvent(event);
+        verify(httpStack).sendTripEvent(event);
         verify(logger).e("MobilityAnalyticsInteractor",
                 "Event was not sent to the backend successfully", exception);
     }

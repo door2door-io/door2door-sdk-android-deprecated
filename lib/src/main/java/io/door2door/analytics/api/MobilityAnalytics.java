@@ -3,7 +3,8 @@ package io.door2door.analytics.api;
 
 import javax.inject.Inject;
 
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.exception.ValidationException;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.dagger.DaggerUtil;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
@@ -32,6 +33,7 @@ public class MobilityAnalytics {
 
     /**
      * Inject dependencies.
+     *
      * @param initializationParameters the initializations parameters to be used by the
      *                                 dependencies.
      */
@@ -43,8 +45,9 @@ public class MobilityAnalytics {
      * Records an event.
      *
      * @param event the event to be recorded.
+     * @throws ValidationException if the sent event is not valid.
      */
-    public void recordEvent(Event event) {
-        mobilityAnalyticsInteractor.sendEvent(event);
+    public void recordEvent(CreateTripEvent event) {
+        mobilityAnalyticsInteractor.sendTripEvent(event);
     }
 }

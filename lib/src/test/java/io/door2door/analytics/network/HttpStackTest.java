@@ -5,10 +5,11 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.api.model.Event;
-import io.door2door.analytics.network.model.EventRequest;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.mapper.ModelMapper;
+import io.door2door.analytics.network.model.TripRequest;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,15 +34,15 @@ public class HttpStackTest {
     @Test
     public void shouldSendEvent() {
         // given
-        Event event = new Event();
-        EventRequest eventRequest = new EventRequest();
-        when(modelMapper.mapEventToEventRequest(event)).thenReturn(eventRequest);
+        TripRequest tripRequest = new TripRequest();
+        CreateTripEvent event = mock(CreateTripEvent.class);
+        when(modelMapper.mapCreateTripEventToTripEventRequest(event)).thenReturn(tripRequest);
 
         // when
-        httpStack.sendEvent(event);
+        httpStack.sendTripEvent(event);
 
         // then
-        verify(retrofitService).postEvent(eventRequest);
+        verify(retrofitService).postTripEvent(tripRequest);
     }
 
 }

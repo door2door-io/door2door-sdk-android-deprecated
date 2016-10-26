@@ -1,7 +1,7 @@
 package io.door2door.analytics.network.model;
 
 /**
- * Network model for a trip.
+ * The type Trip.
  */
 public class Trip {
 
@@ -9,28 +9,36 @@ public class Trip {
     private Place destination;
 
     /**
-     * @return the destination.
+     * Gets destination.
+     *
+     * @return the destination
      */
     public Place getDestination() {
         return destination;
     }
 
     /**
-     * @param destination the destination to set.
+     * Sets destination.
+     *
+     * @param destination the destination
      */
     public void setDestination(Place destination) {
         this.destination = destination;
     }
 
     /**
-     * @return the origin.
+     * Gets origin.
+     *
+     * @return the origin
      */
     public Place getOrigin() {
         return origin;
     }
 
     /**
-     * @param origin the origin to set.
+     * Sets origin.
+     *
+     * @param origin the origin
      */
     public void setOrigin(Place origin) {
         this.origin = origin;
