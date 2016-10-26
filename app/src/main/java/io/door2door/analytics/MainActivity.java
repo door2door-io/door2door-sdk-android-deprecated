@@ -6,10 +6,8 @@ import android.view.View;
 import android.widget.Button;
 
 import io.door2door.analytics.api.MobilityAnalytics;
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
-import io.door2door.analytics.network.model.Person;
-import io.door2door.analytics.network.model.Place;
 import io.door2door.demandsdksample.R;
 
 /**
@@ -31,23 +29,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        // setup the initializations parameters for the mobility analytics
         InitializationParameters initializationParameters = new InitializationParameters();
         initializationParameters.setLoggerEnabled(true);
+
+        // setup the mobility analytics instance
         MobilityAnalytics mobilityAnalytics = new MobilityAnalytics(initializationParameters);
-        Event event = new Event();
-        Person actor = new Person();
-        actor.setDeviceId("xyz");
-        actor.setUuid("abc");
-        actor.setName("John");
-        actor.setPlatform("Android");
-        actor.setApplication("DVG");
-        actor.setVersion("v1.0.1");
-        event.setActor(actor);
-        Place object = new Place();
-        object.setLatitude(45.345);
-        object.setLongitude(89.3455);
-        object.setName("anotherStr");
-        event.setObject(object);
+
+        // prepare a sample event for tracking a trip creation
+        CreateTripEvent event = new CreateTripEvent.CreateTripEventBuilder()
+                .setOriginLatitude(52.529919f)
+                .setOriginLongitude(13.403067f)
+                .setOriginName("Door2Door HQ")
+                .setOriginStreet("Torstrasse 109")
+                .setOriginCity("Berlin")
+                .setOriginPostalCode("10119")
+                .setOriginCountry("Germany")
+                .setDestinationLatitude(52.522258f)
+                .setDestinationLongitude(13.412678f)
+                .setDestinationName("Alexanderplatz")
+                .setDestinationStreet("AlexanderplatzStreet")
+                .setDestinationCity("BerlinCity")
+                .setDestinationPostalCode("10178")
+                .setDestinationCountry("GermanyCountry")
+                .build();
+
+        // send the event to the mobility analytics instance
         mobilityAnalytics.recordEvent(event);
     }
 }

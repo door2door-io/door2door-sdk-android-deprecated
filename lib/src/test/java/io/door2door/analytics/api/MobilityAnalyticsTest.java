@@ -5,11 +5,12 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.logger.Logger;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -33,13 +34,13 @@ public class MobilityAnalyticsTest {
     @Test
     public void shouldRecordEvent() {
         // given
-        Event event = new Event();
+        CreateTripEvent event = mock(CreateTripEvent.class);
 
         // when
         mobilityAnalytics.recordEvent(event);
 
         // then
-        verify(mobilityAnalyticsInteractor).sendEvent(event);
+        verify(mobilityAnalyticsInteractor).sendTripEvent(event);
     }
 
     /**

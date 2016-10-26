@@ -4,7 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.door2door.analytics.api.exception.ValidationException;
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
+
+import static org.mockito.Mockito.mock;
 
 /**
  * Test class for {@link Validator}.
@@ -21,7 +23,7 @@ public class ValidatorTest {
     @Test(expected = ValidationException.class)
     public void shouldFailForNullEvent() {
         // given
-        Event event = null;
+        CreateTripEvent event = null;
 
         // when
         validator.validate(event);
@@ -32,7 +34,7 @@ public class ValidatorTest {
     @Test
     public void shouldNotFailForValidObject() {
         // given
-        Event event = new Event();
+        CreateTripEvent event = mock(CreateTripEvent.class);
 
         // when
         validator.validate(event);

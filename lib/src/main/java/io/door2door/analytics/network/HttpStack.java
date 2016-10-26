@@ -1,8 +1,8 @@
 package io.door2door.analytics.network;
 
-import io.door2door.analytics.api.model.Event;
+import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.mapper.ModelMapper;
-import io.door2door.analytics.network.model.EventRequest;
+import io.door2door.analytics.network.model.TripRequest;
 import rx.Observable;
 
 /**
@@ -26,13 +26,13 @@ public class HttpStack {
     }
 
     /**
-     * Sends the event to the backend.
+     * Send trip event.
      *
      * @param event the event to send.
-     * @return response from the server in an RX observable form.
+     * @return the backend response as observable.
      */
-    public Observable<Void> sendEvent(Event event) {
-        EventRequest eventRequest = modelMapper.mapEventToEventRequest(event);
-        return retrofitService.postEvent(eventRequest);
+    public Observable<Void> sendTripEvent(CreateTripEvent event) {
+        TripRequest tripRequest = modelMapper.mapCreateTripEventToTripEventRequest(event);
+        return retrofitService.postTripEvent(tripRequest);
     }
 }
