@@ -20,21 +20,44 @@ public class CreateTripEvent {
     private final String destinationPostalCode;
     private final String destinationCountry;
 
-    private CreateTripEvent(CreateTripEventBuilder createTripEventBuilder) {
-        this.destinationCity = createTripEventBuilder.destinationCity;
-        this.originLatitude = createTripEventBuilder.originLatitude;
-        this.originLongitude = createTripEventBuilder.originLongitude;
-        this.originName = createTripEventBuilder.originName;
-        this.originCity = createTripEventBuilder.originCity;
-        this.originStreet = createTripEventBuilder.originStreet;
-        this.originPostalCode = createTripEventBuilder.originPostalCode;
-        this.originCountry = createTripEventBuilder.originCountry;
-        this.destinationLatitude = createTripEventBuilder.destinationLatitude;
-        this.destinationLongitude = createTripEventBuilder.destinationLongitude;
-        this.destinationName = createTripEventBuilder.destinationName;
-        this.destinationStreet = createTripEventBuilder.destinationStreet;
-        this.destinationPostalCode = createTripEventBuilder.destinationPostalCode;
-        this.destinationCountry = createTripEventBuilder.destinationCountry;
+    /**
+     * Instantiates a new Create trip event.
+     *
+     * @param destinationCity       the destination city
+     * @param originLatitude        the origin latitude
+     * @param originLongitude       the origin longitude
+     * @param originName            the origin name
+     * @param originCity            the origin city
+     * @param originStreet          the origin street
+     * @param originPostalCode      the origin postal code
+     * @param originCountry         the origin country
+     * @param destinationLatitude   the destination latitude
+     * @param destinationLongitude  the destination longitude
+     * @param destinationName       the destination name
+     * @param destinationStreet     the destination street
+     * @param destinationPostalCode the destination postal code
+     * @param destinationCountry    the destination country
+     */
+    public CreateTripEvent(String destinationCity, float originLatitude, float originLongitude,
+                           String originName, String originCity, String originStreet,
+                           String originPostalCode, String originCountry, float destinationLatitude,
+                           float destinationLongitude, String destinationName,
+                           String destinationStreet, String destinationPostalCode,
+                           String destinationCountry) {
+        this.destinationCity = destinationCity;
+        this.originLatitude = originLatitude;
+        this.originLongitude = originLongitude;
+        this.originName = originName;
+        this.originCity = originCity;
+        this.originStreet = originStreet;
+        this.originPostalCode = originPostalCode;
+        this.originCountry = originCountry;
+        this.destinationLatitude = destinationLatitude;
+        this.destinationLongitude = destinationLongitude;
+        this.destinationName = destinationName;
+        this.destinationStreet = destinationStreet;
+        this.destinationPostalCode = destinationPostalCode;
+        this.destinationCountry = destinationCountry;
     }
 
     /**
@@ -342,7 +365,10 @@ public class CreateTripEvent {
          * @return the create trip event
          */
         public CreateTripEvent build() {
-            return new CreateTripEvent(this);
+            return new CreateTripEvent(destinationCity, originLatitude, originLongitude,
+                    originName, originCity, originStreet, originPostalCode, originCountry,
+                    destinationLatitude, destinationLongitude, destinationName, destinationStreet,
+                    destinationPostalCode, destinationCountry);
         }
     }
 
