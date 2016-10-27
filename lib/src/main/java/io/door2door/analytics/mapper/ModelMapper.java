@@ -52,6 +52,7 @@ public class ModelMapper {
         client.setApplication(initializationParameters.getApplicationName());
         client.setVersion(initializationParameters.getVersionName());
         client.setPlatform(Client.PLATFORM);
+        // TODO 2016-10-27 zlatko: add deviceId
         
         Person actor = new Person();
         actor.setClient(client);
