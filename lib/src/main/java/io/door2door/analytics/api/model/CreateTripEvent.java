@@ -22,7 +22,6 @@ public class CreateTripEvent {
 
     /**
      * Instantiates a new Create trip event.
-     * @param destinationName       the destination name
      * @param originLatitude        the origin latitude
      * @param originLongitude       the origin longitude
      * @param originName            the origin name
@@ -32,18 +31,18 @@ public class CreateTripEvent {
      * @param originCountry         the origin country
      * @param destinationLatitude   the destination latitude
      * @param destinationLongitude  the destination longitude
+     * @param destinationName       the destination name
      * @param destinationCity       the destination city
      * @param destinationStreet     the destination street
      * @param destinationPostalCode the destination postal code
      * @param destinationCountry    the destination country
      */
-    public CreateTripEvent(String destinationName, float originLatitude, float originLongitude,
-                           String originName, String originCity, String originStreet,
-                           String originPostalCode, String originCountry, float destinationLatitude,
-                           float destinationLongitude, String destinationCity,
-                           String destinationStreet, String destinationPostalCode,
-                           String destinationCountry) {
-        this.destinationCity = destinationCity;
+    public CreateTripEvent(float originLatitude, float originLongitude, String originName,
+                           String originCity, String originStreet, String originPostalCode,
+                           String originCountry, float destinationLatitude,
+                           float destinationLongitude, String destinationName,
+                           String destinationCity, String destinationStreet,
+                           String destinationPostalCode, String destinationCountry) {
         this.originLatitude = originLatitude;
         this.originLongitude = originLongitude;
         this.originName = originName;
@@ -51,6 +50,7 @@ public class CreateTripEvent {
         this.originStreet = originStreet;
         this.originPostalCode = originPostalCode;
         this.originCountry = originCountry;
+        this.destinationCity = destinationCity;
         this.destinationLatitude = destinationLatitude;
         this.destinationLongitude = destinationLongitude;
         this.destinationName = destinationName;
@@ -364,10 +364,9 @@ public class CreateTripEvent {
          * @return the create trip event
          */
         public CreateTripEvent build() {
-            return new CreateTripEvent(destinationName, originLatitude, originLongitude, originName,
-                    originCity, originStreet, originPostalCode, originCountry, destinationLatitude,
-                    destinationLongitude, destinationCity,
-                    destinationStreet,
+            return new CreateTripEvent(originLatitude, originLongitude, originName, originCity,
+                    originStreet, originPostalCode, originCountry, destinationLatitude,
+                    destinationLongitude, destinationName, destinationCity, destinationStreet,
                     destinationPostalCode, destinationCountry);
         }
     }
