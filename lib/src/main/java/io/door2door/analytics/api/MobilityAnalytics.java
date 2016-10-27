@@ -47,7 +47,7 @@ public class MobilityAnalytics {
      * @param event the event to be recorded.
      * @throws ValidationException if the sent event is not valid.
      */
-    public void recordEvent(CreateTripEvent event) {
+    public void recordEvent(CreateTripEvent event) throws ValidationException {
         mobilityAnalyticsInteractor.sendTripEvent(event);
     }
 }

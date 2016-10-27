@@ -54,7 +54,7 @@ public class TripRequest {
      * @return the timestamp
      */
     public Date getTimestamp() {
-        return timestamp;
+        return new Date(timestamp.getTime());
     }
 
     /**
@@ -63,7 +63,7 @@ public class TripRequest {
      * @param timestamp the timestamp
      */
     public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+        this.timestamp = new Date(timestamp.getTime());
     }
 
     /**
