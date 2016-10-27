@@ -43,7 +43,6 @@ public class ModelMapper {
         tripRequest.setTrip(trip);
         tripRequest.setTimestamp(new Date());
         tripRequest.setActor(actor);
-
         return tripRequest;
     }
 
