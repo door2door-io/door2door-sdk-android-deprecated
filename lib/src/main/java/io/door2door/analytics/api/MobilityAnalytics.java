@@ -10,7 +10,6 @@ import io.door2door.analytics.base.dagger.DaggerUtil;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.logger.Logger;
 
-
 /**
  * Class responsible interaction by the integrators of the SDK.
  */
