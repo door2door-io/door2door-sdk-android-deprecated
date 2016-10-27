@@ -51,11 +51,9 @@ public class InitializationParameters {
      * Sets application name.
      *
      * @param applicationName the application name
-     * @return the application name
      */
-    public InitializationParameters setApplicationName(String applicationName) {
+    public void setApplicationName(String applicationName) {
         this.applicationName = applicationName;
-        return this;
     }
 
     /**
@@ -71,10 +69,8 @@ public class InitializationParameters {
      * Sets version name.
      *
      * @param versionName the version name
-     * @return the version name
      */
-    public InitializationParameters setVersionName(String versionName) {
+    public void setVersionName(String versionName) {
         this.versionName = versionName;
-        return this;
     }
 }
