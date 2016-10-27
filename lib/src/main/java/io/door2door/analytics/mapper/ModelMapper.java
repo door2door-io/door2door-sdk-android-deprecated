@@ -34,7 +34,7 @@ public class ModelMapper {
      * @return the {@link TripRequest} result
      */
     public TripRequest mapCreateTripEventToTripEventRequest(CreateTripEvent createTripEvent) {
-        Trip trip = mapTripToCreateTripEvent(createTripEvent);
+        Trip trip = mapCreateTripEventToTrip(createTripEvent);
 
         Person actor = setupPerson();
 
@@ -59,7 +59,7 @@ public class ModelMapper {
         return actor;
     }
 
-    private Trip mapTripToCreateTripEvent(CreateTripEvent createTripEvent) {
+    private Trip mapCreateTripEventToTrip(CreateTripEvent createTripEvent) {
         Place origin = new Place();
         origin.setCity(createTripEvent.getOriginCity());
         origin.setCountry(createTripEvent.getOriginCountry());
