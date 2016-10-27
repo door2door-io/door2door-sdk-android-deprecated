@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import io.door2door.analytics.DummyModelsCreatorUtil;
 import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.network.model.Client;
@@ -31,21 +32,7 @@ public class ModelMapperTest {
     @Test
     public void shouldMapEventToEventRequest() {
         // given
-        CreateTripEvent event = new CreateTripEvent.CreateTripEventBuilder()
-                .setOriginLatitude(52.529919f)
-                .setOriginLongitude(13.403067f)
-                .setOriginName("Door2Door HQ")
-                .setOriginStreet("Torstrasse 109")
-                .setOriginCity("Berlin")
-                .setOriginPostalCode("10119")
-                .setOriginCountry("Germany")
-                .setDestinationLatitude(52.522258f)
-                .setDestinationLongitude(13.412678f)
-                .setDestinationName("Alexanderplatz")
-                .setDestinationStreet("AlexanderplatzStreet")
-                .setDestinationCity("BerlinCity")
-                .setDestinationPostalCode("10178")
-                .setDestinationCountry("GermanyCountry")
+        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
                 .build();
 
         // when

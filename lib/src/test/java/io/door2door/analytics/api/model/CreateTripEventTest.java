@@ -3,6 +3,8 @@ package io.door2door.analytics.api.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.door2door.analytics.DummyModelsCreatorUtil;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 /**
@@ -14,26 +16,12 @@ public class CreateTripEventTest {
 
     @Before
     public void setUp() {
-        builder = new CreateTripEvent.CreateTripEventBuilder();
+        builder = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder();
     }
 
     @Test
     public void shouldBuildCreateTripEvent() {
         // given
-        builder.setOriginLatitude(52.529919f)
-                .setOriginLongitude(13.403067f)
-                .setOriginName("Door2Door HQ")
-                .setOriginStreet("Torstrasse 109")
-                .setOriginCity("Berlin")
-                .setOriginPostalCode("10119")
-                .setOriginCountry("Germany")
-                .setDestinationLatitude(52.522258f)
-                .setDestinationLongitude(13.412678f)
-                .setDestinationName("Alexanderplatz")
-                .setDestinationStreet("AlexanderplatzStreet")
-                .setDestinationCity("BerlinCity")
-                .setDestinationPostalCode("10178")
-                .setDestinationCountry("GermanyCountry");
 
         // when
         CreateTripEvent createTripEvent = builder.build();
