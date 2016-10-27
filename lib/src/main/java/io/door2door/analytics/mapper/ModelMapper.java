@@ -34,13 +34,11 @@ public class ModelMapper {
      * @return the {@link TripRequest} result
      */
     public TripRequest mapCreateTripEventToTripEventRequest(CreateTripEvent createTripEvent) {
-        TripRequest tripRequest = new TripRequest();
         Trip trip = mapTripToCreateTripEvent(createTripEvent);
-        Person actor = new Person();
-        Client client = setupClient();
 
-        actor.setClient(client);
+        Person actor = setupPerson();
 
+        TripRequest tripRequest = new TripRequest();
         tripRequest.setStage(TripStage.CREATE);
         tripRequest.setTrip(trip);
         tripRequest.setTimestamp(new Date());
@@ -49,22 +47,19 @@ public class ModelMapper {
         return tripRequest;
     }
 
-    private Client setupClient() {
+    private Person setupPerson() {
         Client client = new Client();
         client.setApplication(initializationParameters.getApplicationName());
         client.setVersion(initializationParameters.getVersionName());
         client.setPlatform(Client.PLATFORM);
-        // TODO 2016-10-25 zlatko: add driverId
-        return client;
+        
+        Person actor = new Person();
+        actor.setClient(client);
+        return actor;
     }
 
     private Trip mapTripToCreateTripEvent(CreateTripEvent createTripEvent) {
-        Trip trip = new Trip();
-        Place destination = new Place();
-        trip.setDestination(destination);
         Place origin = new Place();
-        trip.setOrigin(origin);
-
         origin.setCity(createTripEvent.getOriginCity());
         origin.setCountry(createTripEvent.getOriginCountry());
         origin.setName(createTripEvent.getOriginName());
@@ -73,6 +68,7 @@ public class ModelMapper {
         origin.setPostalCode(createTripEvent.getOriginPostalCode());
         origin.setStreet(createTripEvent.getOriginStreet());
 
+        Place destination = new Place();
         destination.setCity(createTripEvent.getDestinationCity());
         destination.setCountry(createTripEvent.getDestinationCountry());
         destination.setName(createTripEvent.getDestinationName());
@@ -80,6 +76,10 @@ public class ModelMapper {
         destination.setLongitude(createTripEvent.getDestinationLongitude());
         destination.setPostalCode(createTripEvent.getDestinationPostalCode());
         destination.setStreet(createTripEvent.getDestinationStreet());
+
+        Trip trip = new Trip();
+        trip.setDestination(destination);
+        trip.setOrigin(origin);
         return trip;
     }
 }
