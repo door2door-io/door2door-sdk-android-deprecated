@@ -5,15 +5,15 @@ package io.door2door.analytics.api.model;
  */
 public class CreateTripEvent {
 
-    private final float originLatitude;
-    private final float originLongitude;
+    private final Float originLatitude;
+    private final Float originLongitude;
     private final String originName;
     private final String originCity;
     private final String originStreet;
     private final String originPostalCode;
     private final String originCountry;
-    private final float destinationLatitude;
-    private final float destinationLongitude;
+    private final Float destinationLatitude;
+    private final Float destinationLongitude;
     private final String destinationName;
     private final String destinationCity;
     private final String destinationStreet;
@@ -37,10 +37,10 @@ public class CreateTripEvent {
      * @param destinationPostalCode the destination postal code
      * @param destinationCountry    the destination country
      */
-    public CreateTripEvent(float originLatitude, float originLongitude, String originName,
+    public CreateTripEvent(Float originLatitude, Float originLongitude, String originName,
                            String originCity, String originStreet, String originPostalCode,
-                           String originCountry, float destinationLatitude,
-                           float destinationLongitude, String destinationName,
+                           String originCountry, Float destinationLatitude,
+                           Float destinationLongitude, String destinationName,
                            String destinationCity, String destinationStreet,
                            String destinationPostalCode, String destinationCountry) {
         this.originLatitude = originLatitude;
@@ -82,7 +82,7 @@ public class CreateTripEvent {
      *
      * @return the destination latitude
      */
-    public float getDestinationLatitude() {
+    public Float getDestinationLatitude() {
         return destinationLatitude;
     }
 
@@ -91,7 +91,7 @@ public class CreateTripEvent {
      *
      * @return the destination longitude
      */
-    public float getDestinationLongitude() {
+    public Float getDestinationLongitude() {
         return destinationLongitude;
     }
 
@@ -145,7 +145,7 @@ public class CreateTripEvent {
      *
      * @return the origin latitude
      */
-    public float getOriginLatitude() {
+    public Float getOriginLatitude() {
         return originLatitude;
     }
 
@@ -154,7 +154,7 @@ public class CreateTripEvent {
      *
      * @return the origin longitude
      */
-    public float getOriginLongitude() {
+    public Float getOriginLongitude() {
         return originLongitude;
     }
 
@@ -189,15 +189,15 @@ public class CreateTripEvent {
      * The type Create trip event builder.
      */
     public static class CreateTripEventBuilder {
-        private float originLatitude;
-        private float originLongitude;
+        private Float originLatitude;
+        private Float originLongitude;
         private String originName;
         private String originCity;
         private String originStreet;
         private String originPostalCode;
         private String originCountry;
-        private float destinationLatitude;
-        private float destinationLongitude;
+        private Float destinationLatitude;
+        private Float destinationLongitude;
         private String destinationName;
         private String destinationCity;
         private String destinationStreet;
@@ -232,7 +232,7 @@ public class CreateTripEvent {
          * @param destinationLatitude the destination latitude
          * @return the builder
          */
-        public CreateTripEventBuilder setDestinationLatitude(float destinationLatitude) {
+        public CreateTripEventBuilder setDestinationLatitude(Float destinationLatitude) {
             this.destinationLatitude = destinationLatitude;
             return this;
         }
@@ -243,7 +243,7 @@ public class CreateTripEvent {
          * @param destinationLongitude the destination longitude
          * @return the builder
          */
-        public CreateTripEventBuilder setDestinationLongitude(float destinationLongitude) {
+        public CreateTripEventBuilder setDestinationLongitude(Float destinationLongitude) {
             this.destinationLongitude = destinationLongitude;
             return this;
         }
@@ -309,7 +309,7 @@ public class CreateTripEvent {
          * @param originLatitude the origin latitude
          * @return the builder
          */
-        public CreateTripEventBuilder setOriginLatitude(float originLatitude) {
+        public CreateTripEventBuilder setOriginLatitude(Float originLatitude) {
             this.originLatitude = originLatitude;
             return this;
         }
@@ -320,7 +320,7 @@ public class CreateTripEvent {
          * @param originLongitude the origin longitude
          * @return the builder
          */
-        public CreateTripEventBuilder setOriginLongitude(float originLongitude) {
+        public CreateTripEventBuilder setOriginLongitude(Float originLongitude) {
             this.originLongitude = originLongitude;
             return this;
         }
