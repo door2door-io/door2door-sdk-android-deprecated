@@ -1,7 +1,7 @@
 package io.door2door.analytics.base;
 
 /**
- * Helper class for formating of dates.
+ * Helper class for formatting of dates.
  */
 public class DateFormattingHelper {
 
