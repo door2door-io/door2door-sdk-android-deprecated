@@ -40,7 +40,7 @@ public class MobilityAnalyticsTest {
         mobilityAnalytics.recordEvent(event);
 
         // then
-        verify(mobilityAnalyticsInteractor).sendTripEvent(event);
+        verify(mobilityAnalyticsInteractor).processTripEvent(event);
     }
 
     /**

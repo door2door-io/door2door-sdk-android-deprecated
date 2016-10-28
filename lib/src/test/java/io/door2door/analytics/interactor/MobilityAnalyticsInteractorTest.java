@@ -11,6 +11,7 @@ import org.robolectric.annotation.Config;
 import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
+import io.door2door.analytics.validator.Validator;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
@@ -30,13 +31,15 @@ public class MobilityAnalyticsInteractorTest {
     @Mock
     private HttpStack httpStack;
     @Mock
+    private Validator validator;
+    @Mock
     private Logger logger;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mobilityAnalyticsInteractor = new MobilityAnalyticsInteractor(httpStack, logger,
-                AndroidSchedulers.mainThread());
+                AndroidSchedulers.mainThread(), validator);
     }
 
     @Test
@@ -46,10 +49,11 @@ public class MobilityAnalyticsInteractorTest {
         when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>just(null));
 
         // when
-        mobilityAnalyticsInteractor.sendTripEvent(event);
+        mobilityAnalyticsInteractor.processTripEvent(event);
 
         // then
         verify(httpStack).sendTripEvent(event);
+        verify(validator).validate(event);
         verify(logger).d("MobilityAnalyticsInteractor",
                 "Event was sent to the backend successfully");
     }
@@ -62,7 +66,7 @@ public class MobilityAnalyticsInteractorTest {
         when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>error(exception));
 
         // when
-        mobilityAnalyticsInteractor.sendTripEvent(event);
+        mobilityAnalyticsInteractor.processTripEvent(event);
 
         // then
         verify(httpStack).sendTripEvent(event);
