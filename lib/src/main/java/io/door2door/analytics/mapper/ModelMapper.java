@@ -4,6 +4,7 @@ import java.util.Date;
 
 import io.door2door.analytics.api.model.CreateTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.base.DeviceIdRetriever;
 import io.door2door.analytics.network.model.Client;
 import io.door2door.analytics.network.model.Person;
 import io.door2door.analytics.network.model.Place;
@@ -17,14 +18,18 @@ import io.door2door.analytics.network.model.TripStage;
 public class ModelMapper {
 
     private final InitializationParameters initializationParameters;
+    private final DeviceIdRetriever deviceIdRetriever;
 
     /**
      * Instantiates a new Model mapper.
      *
      * @param initializationParameters the initialization parameters
+     * @param deviceIdRetriever the device id retriever
      */
-    public ModelMapper(InitializationParameters initializationParameters) {
+    public ModelMapper(InitializationParameters initializationParameters,
+                       DeviceIdRetriever deviceIdRetriever) {
         this.initializationParameters = initializationParameters;
+        this.deviceIdRetriever = deviceIdRetriever;
     }
 
     /**
@@ -51,7 +56,7 @@ public class ModelMapper {
         client.setApplication(initializationParameters.getApplicationName());
         client.setVersion(initializationParameters.getVersionName());
         client.setPlatform(Client.PLATFORM);
-        // TODO 2016-10-27 zlatko: add deviceId
+        client.setDeviceId(deviceIdRetriever.getDeviceId());
 
         Person actor = new Person();
         actor.setClient(client);

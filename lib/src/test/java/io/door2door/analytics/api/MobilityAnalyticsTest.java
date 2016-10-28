@@ -1,5 +1,7 @@
 package io.door2door.analytics.api;
 
+import android.content.Context;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -28,7 +30,7 @@ public class MobilityAnalyticsTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mobilityAnalytics = new TestMobilityAnalytics(null);
+        mobilityAnalytics = new TestMobilityAnalytics(null, null);
     }
 
     @Test
@@ -51,15 +53,16 @@ public class MobilityAnalyticsTest {
         /**
          * Constructor.
          *
+         * @param context the context
          * @param initializationParameters a wrapper object for all the parameters that can be set
-         *                                 to the SDK.
          */
-        TestMobilityAnalytics(InitializationParameters initializationParameters) {
-            super(initializationParameters);
+        TestMobilityAnalytics(Context context, InitializationParameters initializationParameters) {
+            super(context, initializationParameters);
         }
 
         @Override
-        protected void injectDependencies(InitializationParameters initializationParameters) {
+        protected void injectDependencies(Context context,
+                                          InitializationParameters initializationParameters) {
             mobilityAnalyticsInteractor = MobilityAnalyticsTest.this.mobilityAnalyticsInteractor;
             logger = MobilityAnalyticsTest.this.logger;
         }

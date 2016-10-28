@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initializationParameters.setLoggerEnabled(true);
 
         // setup the mobility analytics instance
-        MobilityAnalytics mobilityAnalytics = new MobilityAnalytics(initializationParameters);
+        MobilityAnalytics mobilityAnalytics = new MobilityAnalytics(this, initializationParameters);
 
         // prepare a sample event for tracking a trip creation
         CreateTripEvent event = new CreateTripEvent.CreateTripEventBuilder()

@@ -1,4 +1,4 @@
-package io.door2door.analytics.network.dagger;
+package io.door2door.analytics.base;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * String type adapter.
  */
-class StringTypeAdapter extends TypeAdapter<String> {
+public class StringTypeAdapter extends TypeAdapter<String> {
 
     @Override
     public void write(JsonWriter jsonWriter, String value) throws IOException {

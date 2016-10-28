@@ -1,5 +1,7 @@
 package io.door2door.analytics.base.dagger;
 
+import android.content.Context;
+
 import io.door2door.analytics.api.MobilityAnalytics;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.interactor.dagger.InteractorModule;
@@ -19,12 +21,13 @@ public final class DaggerUtil {
     /**
      * Prepares dagger component and injects dependencies.
      * @param target the target for injecting the dependencies.
+     * @param context the context
      * @param initializationParameters the initialization parameters for the dagger component.
      */
-    public static void injectInMobilityAnalytics(MobilityAnalytics target,
+    public static void injectInMobilityAnalytics(MobilityAnalytics target, Context context,
                                            InitializationParameters initializationParameters) {
         DaggerMobilityAnalyticsComponent.builder()
-                .baseModule(new BaseModule(initializationParameters))
+                .baseModule(new BaseModule(context, initializationParameters))
                 .interactorModule(new InteractorModule())
                 .loggerModule(new LoggerModule())
                 .mapperModule(new MapperModule())

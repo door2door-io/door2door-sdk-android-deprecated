@@ -1,5 +1,7 @@
 package io.door2door.analytics.network.dagger;
 
+import com.google.gson.Gson;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -7,7 +9,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.door2door.analytics.api.model.InitializationParameters;
-import io.door2door.analytics.base.DateFormattingHelper;
 import io.door2door.analytics.mapper.ModelMapper;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.network.RetrofitService;
@@ -102,14 +103,12 @@ public class NetworkModule {
     /**
      * Dagger 2 provider method.
      *
-     * @param dateFormattingHelper the date formatting helper.
+     * @param gson the gson.
      * @return the provided {@link GsonConverterFactory}
      */
     @Provides
     @Singleton
-    GsonConverterFactory provideGsonConverterFactory(DateFormattingHelper
-                                                                        dateFormattingHelper) {
-        GsonProvider gsonProvider = new GsonProvider(dateFormattingHelper.getDefaultDateFormat());
-        return GsonConverterFactory.create(gsonProvider.get());
+    GsonConverterFactory provideGsonConverterFactory(Gson gson) {
+        return GsonConverterFactory.create(gson);
     }
 }
