@@ -34,7 +34,7 @@ public class Validator {
         return String.format("%s.%s", className, fieldName);
     }
 
-    private void validateLatitude(Float latitude, String fieldName) {
+    private void validateLatitude(Double latitude, String fieldName) {
         if (latitude == null) {
             throw new ValidationException(fieldName, "Latitude must not be null");
         }
@@ -48,7 +48,7 @@ public class Validator {
         }
     }
 
-    private void validateLongitude(Float longitude, String fieldName) {
+    private void validateLongitude(Double longitude, String fieldName) {
         if (longitude == null) {
             throw new ValidationException(fieldName, "Longitude must not be null");
         }
