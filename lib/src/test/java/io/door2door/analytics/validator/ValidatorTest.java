@@ -62,7 +62,7 @@ public class ValidatorTest {
     public void shouldFailForOriginLatitudeBellowMinus90() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLatitude(-100f)
+                .setOriginLatitude(-100.123)
                 .build();
 
         // when
@@ -77,7 +77,7 @@ public class ValidatorTest {
     public void shouldFailForOriginLatitudeAbove90() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLatitude(100f)
+                .setOriginLatitude(100.123)
                 .build();
 
         // when
@@ -106,7 +106,7 @@ public class ValidatorTest {
     public void shouldFailForOriginLongitudeBellowMinus180() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLongitude(-200f)
+                .setOriginLongitude(-200.123)
                 .build();
 
         // when
@@ -121,7 +121,7 @@ public class ValidatorTest {
     public void shouldFailForOriginLongitudeAbove180() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLongitude(200f)
+                .setOriginLongitude(200.123)
                 .build();
 
         // when
@@ -151,7 +151,7 @@ public class ValidatorTest {
     public void shouldFailForDestinationLatitudeBellowMinus90() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLatitude(-100f)
+                .setDestinationLatitude(-100.123)
                 .build();
 
         // when
@@ -166,7 +166,7 @@ public class ValidatorTest {
     public void shouldFailForDestinationLatitudeAbove90() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLatitude(100f)
+                .setDestinationLatitude(100.123)
                 .build();
 
         // when
@@ -196,7 +196,7 @@ public class ValidatorTest {
     public void shouldFailForDestinationLongitudeBellowMinus180() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLongitude(-200f)
+                .setDestinationLongitude(-200.123)
                 .build();
 
         // when
@@ -211,7 +211,7 @@ public class ValidatorTest {
     public void shouldFailForDestinationLongitudeAbove180() {
         // given
         CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLongitude(200f)
+                .setDestinationLongitude(200.123)
                 .build();
 
         // when

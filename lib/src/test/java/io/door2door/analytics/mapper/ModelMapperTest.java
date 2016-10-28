@@ -45,8 +45,8 @@ public class ModelMapperTest {
         assertThat(client.getPlatform()).isEqualTo(Client.PLATFORM);
 
         Place origin = eventRequest.getTrip().getOrigin();
-        assertThat(origin.getLatitude()).isEqualTo(52.529919f);
-        assertThat(origin.getLongitude()).isEqualTo(13.403067f);
+        assertThat(origin.getLatitude()).isEqualTo(52.529919);
+        assertThat(origin.getLongitude()).isEqualTo(13.403067);
         assertThat(origin.getName()).isEqualTo("Door2Door HQ");
         assertThat(origin.getStreet()).isEqualTo("Torstrasse 109");
         assertThat(origin.getCity()).isEqualTo("Berlin");
@@ -54,8 +54,8 @@ public class ModelMapperTest {
         assertThat(origin.getCountry()).isEqualTo("Germany");
 
         Place destination = eventRequest.getTrip().getDestination();
-        assertThat(destination.getLatitude()).isEqualTo(52.522258f);
-        assertThat(destination.getLongitude()).isEqualTo(13.412678f);
+        assertThat(destination.getLatitude()).isEqualTo(52.522258);
+        assertThat(destination.getLongitude()).isEqualTo(13.412678);
         assertThat(destination.getName()).isEqualTo("Alexanderplatz");
         assertThat(destination.getStreet()).isEqualTo("AlexanderplatzStreet");
         assertThat(destination.getCity()).isEqualTo("BerlinCity");

@@ -27,15 +27,15 @@ public class CreateTripEventTest {
         CreateTripEvent createTripEvent = builder.build();
 
         // then
-        assertThat(createTripEvent.getOriginLatitude()).isEqualTo(52.529919f);
-        assertThat(createTripEvent.getOriginLongitude()).isEqualTo(13.403067f);
+        assertThat(createTripEvent.getOriginLatitude()).isEqualTo(52.529919);
+        assertThat(createTripEvent.getOriginLongitude()).isEqualTo(13.403067);
         assertThat(createTripEvent.getOriginName()).isEqualTo("Door2Door HQ");
         assertThat(createTripEvent.getOriginStreet()).isEqualTo("Torstrasse 109");
         assertThat(createTripEvent.getOriginCity()).isEqualTo("Berlin");
         assertThat(createTripEvent.getOriginPostalCode()).isEqualTo("10119");
         assertThat(createTripEvent.getOriginCountry()).isEqualTo("Germany");
-        assertThat(createTripEvent.getDestinationLatitude()).isEqualTo(52.522258f);
-        assertThat(createTripEvent.getDestinationLongitude()).isEqualTo(13.412678f);
+        assertThat(createTripEvent.getDestinationLatitude()).isEqualTo(52.522258);
+        assertThat(createTripEvent.getDestinationLongitude()).isEqualTo(13.412678);
         assertThat(createTripEvent.getDestinationName()).isEqualTo("Alexanderplatz");
         assertThat(createTripEvent.getDestinationStreet()).isEqualTo("AlexanderplatzStreet");
         assertThat(createTripEvent.getDestinationCity()).isEqualTo("BerlinCity");

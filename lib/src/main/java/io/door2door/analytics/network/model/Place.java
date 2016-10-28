@@ -5,8 +5,8 @@ package io.door2door.analytics.network.model;
  */
 public class Place {
 
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private String name;
     private String city;
     private String street;
@@ -54,7 +54,7 @@ public class Place {
      *
      * @return the latitude
      */
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -63,7 +63,7 @@ public class Place {
      *
      * @param latitude the latitude
      */
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
@@ -72,7 +72,7 @@ public class Place {
      *
      * @return the longitude
      */
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
@@ -81,7 +81,7 @@ public class Place {
      *
      * @param longitude the longitude
      */
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
