@@ -47,6 +47,6 @@ public class MobilityAnalytics {
      * @throws ValidationException if the sent event is not valid.
      */
     public void recordEvent(CreateTripEvent event) throws ValidationException {
-        mobilityAnalyticsInteractor.sendTripEvent(event);
+        mobilityAnalyticsInteractor.processTripEvent(event);
     }
 }

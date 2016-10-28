@@ -7,6 +7,7 @@ import dagger.Provides;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
+import io.door2door.analytics.validator.Validator;
 import rx.schedulers.Schedulers;
 
 /**
@@ -21,11 +22,13 @@ public class InteractorModule {
      * @return the provided {@link MobilityAnalyticsInteractor}
      * @param httpStack the HTTP stack to be used by the interactor.
      * @param logger the logger.
+     * @param validator the validator
      */
     @Provides
     @Singleton
     MobilityAnalyticsInteractor provideMobilityAnalyticsInteractor(HttpStack httpStack,
-                                                                   Logger logger) {
-        return new MobilityAnalyticsInteractor(httpStack, logger, Schedulers.io());
+                                                                   Logger logger,
+                                                                   Validator validator) {
+        return new MobilityAnalyticsInteractor(httpStack, logger, Schedulers.io(), validator);
     }
 }
