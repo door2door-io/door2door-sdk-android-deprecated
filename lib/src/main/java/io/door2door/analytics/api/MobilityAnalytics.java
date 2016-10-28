@@ -1,6 +1,8 @@
 package io.door2door.analytics.api;
 
 
+import android.content.Context;
+
 import javax.inject.Inject;
 
 import io.door2door.analytics.api.exception.ValidationException;
@@ -23,21 +25,23 @@ public class MobilityAnalytics {
     /**
      * Constructor.
      *
+     * @param context the context
      * @param initializationParameters a wrapper object for all the parameters that can be set to
      *                                 the SDK.
      */
-    public MobilityAnalytics(InitializationParameters initializationParameters) {
-        injectDependencies(initializationParameters);
+    public MobilityAnalytics(Context context, InitializationParameters initializationParameters) {
+        injectDependencies(context, initializationParameters);
     }
 
     /**
      * Inject dependencies.
      *
+     * @param context the context
      * @param initializationParameters the initializations parameters to be used by the
-     *                                 dependencies.
      */
-    protected void injectDependencies(InitializationParameters initializationParameters) {
-        DaggerUtil.injectInMobilityAnalytics(this, initializationParameters);
+    protected void injectDependencies(Context context,
+                                      InitializationParameters initializationParameters) {
+        DaggerUtil.injectInMobilityAnalytics(this, context, initializationParameters);
     }
 
     /**
