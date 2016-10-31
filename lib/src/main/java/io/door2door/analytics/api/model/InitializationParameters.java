@@ -8,6 +8,7 @@ public class InitializationParameters {
     private boolean loggerEnabled;
     private String applicationName;
     private String versionName;
+    private Environment environment;
 
     /**
      * Constructor.
@@ -18,6 +19,7 @@ public class InitializationParameters {
 
     private void initWithDefaultValues() {
         loggerEnabled = false;
+        environment = Environment.PRODUCTION;
     }
 
     /**
@@ -72,5 +74,23 @@ public class InitializationParameters {
      */
     public void setVersionName(String versionName) {
         this.versionName = versionName;
+    }
+
+    /**
+     * Gets environment.
+     *
+     * @return the environment
+     */
+    public Environment getEnvironment() {
+        return environment;
+    }
+
+    /**
+     * Sets environment.
+     *
+     * @param environment the environment
+     */
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
     }
 }

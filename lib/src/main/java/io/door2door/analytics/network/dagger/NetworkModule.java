@@ -10,6 +10,7 @@ import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.DateFormattingHelper;
 import io.door2door.analytics.mapper.ModelMapper;
 import io.door2door.analytics.network.HttpStack;
+import io.door2door.analytics.network.NetworkConfigurator;
 import io.door2door.analytics.network.RetrofitService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -25,13 +26,6 @@ import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
  */
 @Module
 public class NetworkModule {
-
-    // TODO 2016-10-25 zlatko: add API version
-    // TODO 2016-10-25 zlatko: add environment selector
-    private static final String BASE_URL =
-            "https://events-dev.d2di.net/v1/";
-
-    private static final int TIMEOUT_SECONDS = 30;
 
     /**
      * Dagger 2 provider method.
@@ -57,11 +51,11 @@ public class NetworkModule {
     @Provides
     @Singleton
     RetrofitService provideRetrofitService(OkHttpClient okHttpClient,
-                                                  RxJavaCallAdapterFactory
-                                                          rxAdapterFactory,
-                                                  GsonConverterFactory gsonConverterFactory) {
+                                           RxJavaCallAdapterFactory rxAdapterFactory,
+                                           GsonConverterFactory gsonConverterFactory,
+                                           NetworkConfigurator networkConfigurator) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(networkConfigurator.getBaseUrlWithVersion())
                 .client(okHttpClient)
                 .addCallAdapterFactory(rxAdapterFactory)
                 .addConverterFactory(gsonConverterFactory)
@@ -73,17 +67,19 @@ public class NetworkModule {
      * Dagger 2 provider method.
      *
      * @param initializationParameters the initialization parameters.
+     * @param networkConfigurator      the network configurator
      * @return the provided {@link OkHttpClient}
      */
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient(InitializationParameters initializationParameters) {
+    OkHttpClient provideOkHttpClient(InitializationParameters initializationParameters,
+                                     NetworkConfigurator networkConfigurator) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(initializationParameters.isLoggerEnabled() ? BODY : NONE);
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .connectTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-                .readTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-                .writeTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                .connectTimeout(networkConfigurator.getDefaultTimeoutInSeconds(), TimeUnit.SECONDS)
+                .readTimeout(networkConfigurator.getDefaultTimeoutInSeconds(), TimeUnit.SECONDS)
+                .writeTimeout(networkConfigurator.getDefaultTimeoutInSeconds(), TimeUnit.SECONDS)
                 .addInterceptor(interceptor);
         return builder.build();
     }
@@ -111,5 +107,18 @@ public class NetworkModule {
                                                                         dateFormattingHelper) {
         GsonProvider gsonProvider = new GsonProvider(dateFormattingHelper.getDefaultDateFormat());
         return GsonConverterFactory.create(gsonProvider.get());
+    }
+
+    /**
+     * Dagger 2 provider method.
+     *
+     * @param initializationParameters the initialization parameters
+     * @return the provided {@link NetworkConfigurator}
+     */
+    @Provides
+    @Singleton
+    NetworkConfigurator provideNetworkConfigurator(
+            InitializationParameters initializationParameters) {
+        return new NetworkConfigurator(initializationParameters);
     }
 }
