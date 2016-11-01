@@ -1,0 +1,62 @@
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
+
+jacoco {
+    toolVersion = "0.7.2.201409121644"
+}
+
+project.afterEvaluate {
+        def testTaskName = "testDebugUnitTest"
+
+        tasks.create(name: "${testTaskName}Coverage", type: JacocoReport, dependsOn: "$testTaskName") {
+            group = "reporting"
+            description = "Generate Jacoco coverage reports for the build."
+
+            classDirectories = fileTree(
+                    dir: "${project.buildDir}/intermediates/classes",
+                    excludes: ['**/R.class',
+                               '**/R$*.class',
+                               '**/*$ViewInjector*.*',
+                               '**/*$ViewBinder*.*',
+                               '**/BuildConfig.*',
+                               '**/Manifest*.*',
+                               '**/dagger/**',
+                               '**/*MembersInjector.class',
+                               '**/*Factory.class',
+                               '**/*Component*']
+            )
+
+            sourceDirectories = files(['src/main/java'])
+            executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
+
+            reports {
+                xml.enabled = true
+                html.enabled = true
+            }
+        }
+}
+
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'testDebugUnitTestCoverage'
+    onlyIf { isCorrectBranch() && shouldUpload() }
+}
+
+def isCorrectBranch() {
+    def workingBranch = System.getenv("TRAVIS_BRANCH")
+    workingBranch.equals("develop")
+}
+
+def shouldUpload() {
+    def pullRequestVariable = System.getenv("TRAVIS_PULL_REQUEST")
+    if (pullRequestVariable == null) {
+        false
+    } else if (pullRequestVariable.equals("false")) {
+        true
+    } else {
+        false
+    }
+}

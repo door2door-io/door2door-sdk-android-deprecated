@@ -7,7 +7,7 @@ android:
   - tools # to get the new `repository-11.xml`
   - tools # to install Android SDK tools 25.1.x
   - platform-tools
-  - build-tools-24.0.2
+  - build-tools-24.0.3
   - android-24
   - extra-google-google_play_services
   - extra-google-m2repository
@@ -30,7 +30,8 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 notifications:
+  email: false
   slack:
     rooms:
-      secure: NqU75qhZatzbCfjzM8MgTo0EyQiq+aYywzWKstu7xfrHLm4gqNDMmyXK8qlbxq0PXMMztdjF+s+HBC+DAVmrSm+yLFUe4nD+XdkibiMi9CfzpDspPfO3pJdeDLkk0EWe9v9bOt7SjPULQmQ5T+YbZgQSq7goRQSGJjg9VXwXJWM=
+      secure: kbTANWggnsy0VZtCGk+l2chnnj5nXRqmOg4hZttDMLNCpVL0EyypbgPUn8sD3L0PvSRXdBBlv6UAbYe+Ld6XzG78c4opmSczs3F3Ps6SrTNWHGAXbF7lO74kGXKsMpDnhQy3kJRfLt+WQLTuBOeMNkTCPZJ92zLx4m9ER0miUQAVCl5g8AOxQu4IWZtoxBstDbPpc7otXvOqrADg2uoEZYrMjNOYKkLQrecNlbv81103v8oc0PEzTXlJTVUu22w74AwUe5k4LkrKEgvdHQJOAX/8KZpD5oaC/h3hPf/XQ16Jq434PKZ+DM6F/v/teGohJmtG7RpTcRoINe4viHlIDMCQT/3FZe919tIrKI5q9laISvWlVNCvNQNvnD1tLKvEqJbyL4asZn8MqscMDpu3msh+XRuhpOWGtsGQ1t4jCgHADWZQOf018XuqM/BMWoiVOKFYtEueHxFmuWCRBn1vu+tRNLnsbgZPRaZq7JnzbPUWaKHRKntG2HuT4p/RE060XjV8rdTeiX8Gq3LlfM/S8lZaOgJCjMM/ucr2Sx/J/cCg1VBuR8XbRXOsSOWrKVvaZBchZtfDXMCyKsLukkJipbCcs7EUqJUgIgb73HJmmESyMxsGd5adajNvE2jSiwpv7YyWiTC+gOzVvXDgNVxslMOy9rXhmJryJ4taBSXpEsI=
 after_failure: "cat /home/travis/build/door2door-io/mobile-analytics-android/lib/build/outputs/lint-results-debug.xml"

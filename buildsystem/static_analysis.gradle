@@ -1,0 +1,64 @@
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: 'checkstyle'
+
+String REPORTING_GROUP = "reporting"
+
+findbugs {
+    reportsDir = file("$project.buildDir/reports/findbugs/")
+    reportLevel = "medium"
+    effort = "max"
+}
+
+pmd {
+    reportsDir = file("$project.buildDir/reports/pmd/")
+}
+
+task checkstyle(type: Checkstyle, dependsOn: assemble) {
+    description 'Run checkstyle'
+    group REPORTING_GROUP
+
+    configFile file("../config/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
+}
+
+task findbugs(type: FindBugs, dependsOn: assemble) {
+    description 'Run findbugs'
+    group REPORTING_GROUP
+
+    classes = fileTree("build/intermediates/classes/debug/")
+    source = fileTree('src/main/java')
+    classpath = files()
+
+    effort = 'max'
+
+    excludeFilter = file("../config/findbugs_exclude.xml")
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+task pmd(type: Pmd, dependsOn: assemble) {
+    description 'Run pmd'
+    group REPORTING_GROUP
+
+    ruleSets = ["java-basic", "java-braces", "java-strings", "java-design", "java-unusedcode"]
+    source = fileTree('src/main/java')
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+check.doLast {
+    project.tasks.getByName("findbugs").execute()
+    project.tasks.getByName("pmd").execute()
+    project.tasks.getByName("checkstyle").execute()
+}
