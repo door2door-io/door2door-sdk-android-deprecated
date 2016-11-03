@@ -6,7 +6,7 @@
 An Android SDK for using the Door2Door mobility analytics.
 
 ## Usage
-TBD
+For an example on how to use the SDK see the [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-androisdasdasdasdad).
 
 ## Developer Guide
 The goal of this is to provide all the information a new developer would need to start with the development. If when using it if for some reason you need some additiona informations, please make sure that this README.md file is updated. 
@@ -18,9 +18,17 @@ To build the project in the command line run:
 ./gradlew clean build
 ```
 ### Releasing
-TBD
+Releases are automatically done by travis and are triggered by a commit on the masster branch. The steps to foolow when creating a release are:
+ * Create a release branch.
+ * On the develop bump the version ot the next one
+ * Once everything is OK merge the release branch back to master and develop and this will triger the travis job that creates the release.
+ * Make sure to have a git tag of the relesed version
+ 
+Note: All builds created from master on travis will be release builds (the -SNAPSHOT) secion of the version is removed at build time.
+ 
 ### Versioning
 TBD
+
 ### Troubleshooting
 TBD
 
