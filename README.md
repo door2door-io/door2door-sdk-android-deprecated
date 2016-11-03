@@ -6,7 +6,7 @@
 An Android SDK for using the Door2Door mobility analytics.
 
 ## Usage
-For an example on how to use the SDK see the [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-androisdasdasdasdad).
+For an example on how to use the SDK see the [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-android).
 
 ## Developer Guide
 The goal of this is to provide all the information a new developer would need to start with the development. If when using it if for some reason you need some additiona informations, please make sure that this README.md file is updated. 
