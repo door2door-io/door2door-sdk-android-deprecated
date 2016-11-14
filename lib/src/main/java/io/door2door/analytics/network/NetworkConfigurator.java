@@ -3,7 +3,7 @@ package io.door2door.analytics.network;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.door2door.analytics.api.model.Environment;
+import io.door2door.analytics.base.model.Environment;
 import io.door2door.analytics.api.model.InitializationParameters;
 
 /**
@@ -20,7 +20,7 @@ public class NetworkConfigurator {
 
     static {
         BASE_URLS.put(Environment.TEST, "events-dev.d2di.net");
-        BASE_URLS.put(Environment.PRODUCTION, "events-dev.d2di.net");
+        BASE_URLS.put(Environment.PRODUCTION, "events.d2di.net");
     }
 
     /**

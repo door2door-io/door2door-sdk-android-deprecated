@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.logger.Logger;
@@ -36,7 +36,7 @@ public class MobilityAnalyticsTest {
     @Test
     public void shouldRecordEvent() {
         // given
-        CreateTripEvent event = mock(CreateTripEvent.class);
+        SearchTripEvent event = mock(SearchTripEvent.class);
 
         // when
         mobilityAnalytics.recordEvent(event);

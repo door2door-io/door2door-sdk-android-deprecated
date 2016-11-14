@@ -29,7 +29,7 @@ public class NetworkConfiguratorTest {
         String baseUrlWithVersion = networkConfigurator.getBaseUrlWithVersion();
 
         // then
-        assertThat(baseUrlWithVersion).isEqualTo("https://events-dev.d2di.net/v1/");
+        assertThat(baseUrlWithVersion).isEqualTo("https://events.d2di.net/v1/");
     }
 
 }

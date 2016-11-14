@@ -1,6 +1,6 @@
 package io.door2door.analytics.interactor;
 
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
@@ -40,7 +40,7 @@ public class MobilityAnalyticsInteractor {
      *
      * @param event the event
      */
-    public void processTripEvent(CreateTripEvent event) {
+    public void processTripEvent(SearchTripEvent event) {
         validator.validate(event);
 
         httpStack.sendTripEvent(event)

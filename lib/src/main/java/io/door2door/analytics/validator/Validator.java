@@ -1,7 +1,7 @@
 package io.door2door.analytics.validator;
 
 import io.door2door.analytics.api.exception.ValidationException;
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 
 /**
  * Class responsible for checking the validity of the models.
@@ -14,20 +14,20 @@ public class Validator {
      * @param event the model to validate.
      * @throws ValidationException in case the validation fails.
      */
-    public void validate(CreateTripEvent event) throws ValidationException {
-        String className = CreateTripEvent.class.getSimpleName();
+    public void validate(SearchTripEvent event) throws ValidationException {
+        String className = SearchTripEvent.class.getSimpleName();
         if (event == null) {
             throw new ValidationException(className, "The root event object can't be null");
         }
 
-        validateLatitude(event.getOriginLatitude(),
-                getFieldPath(className, "originLatitude"));
-        validateLongitude(event.getOriginLongitude(),
-                getFieldPath(className, "originLongitude"));
-        validateLatitude(event.getDestinationLatitude(),
-                getFieldPath(className, "destinationLatitude"));
-        validateLongitude(event.getDestinationLongitude(),
-                getFieldPath(className, "destinationLongitude"));
+        validateLatitude(event.getDepartureLatitude(),
+                getFieldPath(className, "departureLatitude"));
+        validateLongitude(event.getDepartureLongitude(),
+                getFieldPath(className, "departureLongitude"));
+        validateLatitude(event.getArrivalLatitude(),
+                getFieldPath(className, "arrivalLatitude"));
+        validateLongitude(event.getArrivalLongitude(),
+                getFieldPath(className, "arrivalLongitude"));
     }
 
     private String getFieldPath(String className, String fieldName) {
