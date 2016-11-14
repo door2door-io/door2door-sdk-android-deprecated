@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class TripRequest {
 
-    private TripStage stage;
+    private Action action;
     private Date timestamp;
     private Person actor;
     private Trip trip;
@@ -31,21 +31,21 @@ public class TripRequest {
     }
 
     /**
-     * Gets stage.
+     * Gets action.
      *
-     * @return the stage
+     * @return the action
      */
-    public TripStage getStage() {
-        return stage;
+    public Action getAction() {
+        return action;
     }
 
     /**
-     * Sets stage.
+     * Sets action.
      *
-     * @param stage the stage
+     * @param action the action
      */
-    public void setStage(TripStage stage) {
-        this.stage = stage;
+    public void setAction(Action action) {
+        this.action = action;
     }
 
     /**

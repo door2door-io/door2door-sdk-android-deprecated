@@ -8,7 +8,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
@@ -45,7 +45,7 @@ public class MobilityAnalyticsInteractorTest {
     @Test
     public void shouldSendEvent() {
         // given
-        CreateTripEvent event = mock(CreateTripEvent.class);
+        SearchTripEvent event = mock(SearchTripEvent.class);
         when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>just(null));
 
         // when
@@ -61,7 +61,7 @@ public class MobilityAnalyticsInteractorTest {
     @Test
     public void shouldHandleErrorWhileSendingEvent() {
         // given
-        CreateTripEvent event = mock(CreateTripEvent.class);
+        SearchTripEvent event = mock(SearchTripEvent.class);
         RuntimeException exception = new RuntimeException();
         when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>error(exception));
 

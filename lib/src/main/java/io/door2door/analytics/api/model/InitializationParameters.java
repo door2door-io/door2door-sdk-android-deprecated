@@ -1,5 +1,7 @@
 package io.door2door.analytics.api.model;
 
+import io.door2door.analytics.base.model.Environment;
+
 /**
  * Model class containing all the parameters that can be set wile initializing the SDK.
  */

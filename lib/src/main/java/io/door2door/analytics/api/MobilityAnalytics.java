@@ -6,7 +6,7 @@ import android.content.Context;
 import javax.inject.Inject;
 
 import io.door2door.analytics.api.exception.ValidationException;
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.dagger.DaggerUtil;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
@@ -50,7 +50,7 @@ public class MobilityAnalytics {
      * @param event the event to be recorded.
      * @throws ValidationException if the sent event is not valid.
      */
-    public void recordEvent(CreateTripEvent event) throws ValidationException {
+    public void recordEvent(SearchTripEvent event) throws ValidationException {
         mobilityAnalyticsInteractor.processTripEvent(event);
     }
 }

@@ -1,4 +1,4 @@
-package io.door2door.analytics.api.model;
+package io.door2door.analytics.base.model;
 
 /**
  * Enum for the environments.

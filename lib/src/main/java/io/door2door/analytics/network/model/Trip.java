@@ -1,46 +1,69 @@
 package io.door2door.analytics.network.model;
 
+import java.util.List;
+
+import io.door2door.analytics.base.model.ModeOfTransportation;
+
 /**
  * The type Trip.
  */
 public class Trip {
 
-    private Place origin;
-    private Place destination;
+    private List<ModeOfTransportation> modeOfTransportation;
+    private PlaceAtTime departure;
+    private PlaceAtTime arrival;
 
     /**
-     * Gets destination.
+     * Gets mode of transportation.
      *
-     * @return the destination
+     * @return the mode of transportation
      */
-    public Place getDestination() {
-        return destination;
+    public List<ModeOfTransportation> getModeOfTransportation() {
+        return modeOfTransportation;
     }
 
     /**
-     * Sets destination.
+     * Sets mode of transportation.
      *
-     * @param destination the destination
+     * @param modeOfTransportation the mode of transportation
      */
-    public void setDestination(Place destination) {
-        this.destination = destination;
+    public void setModeOfTransportation(List<ModeOfTransportation> modeOfTransportation) {
+        this.modeOfTransportation = modeOfTransportation;
     }
 
     /**
-     * Gets origin.
+     * Gets arrival.
      *
-     * @return the origin
+     * @return the arrival
      */
-    public Place getOrigin() {
-        return origin;
+    public PlaceAtTime getArrival() {
+        return arrival;
     }
 
     /**
-     * Sets origin.
+     * Sets arrival.
      *
-     * @param origin the origin
+     * @param arrival the arrival
      */
-    public void setOrigin(Place origin) {
-        this.origin = origin;
+    public void setArrival(PlaceAtTime arrival) {
+        this.arrival = arrival;
+    }
+
+    /**
+     * Gets departure.
+     *
+     * @return the departure
+     */
+    public PlaceAtTime getDeparture() {
+        return departure;
+    }
+
+    /**
+     * Sets departure.
+     *
+     * @param departure the departure
+     */
+    public void setDeparture(PlaceAtTime departure) {
+        this.departure = departure;
     }
 }
