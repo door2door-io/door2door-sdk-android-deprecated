@@ -32,25 +32,25 @@ public class SearchTripEvent {
     /**
      * Instantiates a new search trip event.
      *
-     * @param departureTimestamp   the departure timestamp
-     * @param departureLatitude    the departure latitude
-     * @param departureLongitude   the departure longitude
-     * @param departureName        the departure name
-     * @param departureCity        the departure city
-     * @param departureStreet      the departure street
-     * @param departurePostalCode  the departure postal code
-     * @param departureCountry     the departure country
-     * @param arrivalTimestamp     the arrival timestamp
-     * @param arrivalLatitude      the arrival latitude
-     * @param arrivalLongitude     the arrival longitude
-     * @param arrivalName          the arrival name
-     * @param arrivalCity          the arrival city
-     * @param arrivalStreet        the arrival street
-     * @param arrivalPostalCode    the arrival postal code
-     * @param arrivalCountry       the arrival country
-     * @param modeOfTransportationList the mode of transportation
+     * @param departureTimestamp       the departure timestamp
+     * @param departureLatitude        the departure latitude
+     * @param departureLongitude       the departure longitude
+     * @param departureName            the departure name
+     * @param departureCity            the departure city
+     * @param departureStreet          the departure street
+     * @param departurePostalCode      the departure postal code
+     * @param departureCountry         the departure country
+     * @param arrivalTimestamp         the arrival timestamp
+     * @param arrivalLatitude          the arrival latitude
+     * @param arrivalLongitude         the arrival longitude
+     * @param arrivalName              the arrival name
+     * @param arrivalCity              the arrival city
+     * @param arrivalStreet            the arrival street
+     * @param arrivalPostalCode        the arrival postal code
+     * @param arrivalCountry           the arrival country
+     * @param modeOfTransportationList the mode of transportation list
      */
-    public SearchTripEvent(Date departureTimestamp, Double departureLatitude,
+    SearchTripEvent(Date departureTimestamp, Double departureLatitude,
                            Double departureLongitude, String departureName,
                            String departureCity, String departureStreet, String departurePostalCode,
                            String departureCountry, Date arrivalTimestamp, Double arrivalLatitude,
