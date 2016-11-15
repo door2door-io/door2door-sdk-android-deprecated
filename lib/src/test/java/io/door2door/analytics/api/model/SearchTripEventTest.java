@@ -7,6 +7,8 @@ import java.util.Date;
 
 import io.door2door.analytics.DummyModelsCreatorUtil;
 
+import static io.door2door.analytics.base.model.ModeOfTransportation.BIKE_SHARING;
+import static io.door2door.analytics.base.model.ModeOfTransportation.CAR_SHARING;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 /**
@@ -22,7 +24,7 @@ public class SearchTripEventTest {
     }
 
     @Test
-    public void shouldBuildCreateTripEvent() {
+    public void shouldBuildSearchTripEvent() {
         // given
 
         // when
@@ -45,6 +47,9 @@ public class SearchTripEventTest {
         assertThat(searchTripEvent.getArrivalCity()).isEqualTo("BerlinCity");
         assertThat(searchTripEvent.getArrivalPostalCode()).isEqualTo("10178");
         assertThat(searchTripEvent.getArrivalCountry()).isEqualTo("GermanyCountry");
+        assertThat(searchTripEvent.getModeOfTransportationList().size()).isEqualTo(2);
+        assertThat(searchTripEvent.getModeOfTransportationList().get(0)).isEqualTo(BIKE_SHARING);
+        assertThat(searchTripEvent.getModeOfTransportationList().get(1)).isEqualTo(CAR_SHARING);
     }
 
 }

@@ -3,7 +3,9 @@ package io.door2door.analytics.network;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.door2door.analytics.DummyModelsCreatorUtil;
 import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.base.model.Environment;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -17,7 +19,10 @@ public class NetworkConfiguratorTest {
 
     @Before
     public void setUp() {
-        InitializationParameters initializationParameters = new InitializationParameters();
+        InitializationParameters initializationParameters =
+                DummyModelsCreatorUtil.getDummyInitializationParametersBuilder()
+                        .setEnvironment(Environment.PRODUCTION)
+                        .build();
         networkConfigurator = new NetworkConfigurator(initializationParameters);
     }
 

@@ -2,7 +2,9 @@ package io.door2door.analytics;
 
 import java.util.Date;
 
+import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.api.model.SearchTripEvent;
+import io.door2door.analytics.base.model.Environment;
 import io.door2door.analytics.base.model.ModeOfTransportation;
 
 /**
@@ -39,5 +41,19 @@ public class DummyModelsCreatorUtil {
                 .setArrivalCountry("GermanyCountry")
                 .addModeOfTransportation(ModeOfTransportation.BIKE_SHARING)
                 .addModeOfTransportation(ModeOfTransportation.CAR_SHARING);
+    }
+
+    /**
+     * Gets dummy initialization parameters builder.
+     *
+     * @return the dummy initialization parameters builder
+     */
+    public static InitializationParameters.InitializationParametersBuilder
+    getDummyInitializationParametersBuilder() {
+        return new InitializationParameters.InitializationParametersBuilder()
+                .setApplicationName("Cool Application")
+                .setEnvironment(Environment.TEST)
+                .setLoggerEnabled(true)
+                .setVersionName("1.0.1");
     }
 }

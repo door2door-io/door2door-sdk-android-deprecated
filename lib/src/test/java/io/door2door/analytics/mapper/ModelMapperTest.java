@@ -37,9 +37,9 @@ public class ModelMapperTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        InitializationParameters initializationParameters = new InitializationParameters();
-        initializationParameters.setApplicationName("someApplication");
-        initializationParameters.setVersionName("v1.0.1");
+        InitializationParameters initializationParameters =
+                DummyModelsCreatorUtil.getDummyInitializationParametersBuilder()
+                        .build();
         modelMapper = new ModelMapper(initializationParameters, deviceIdRetriever);
     }
 
@@ -56,8 +56,8 @@ public class ModelMapperTest {
 
         // then
         Client client = eventRequest.getActor().getClient();
-        assertThat(client.getApplication()).isEqualTo("someApplication");
-        assertThat(client.getVersion()).isEqualTo("v1.0.1");
+        assertThat(client.getApplication()).isEqualTo("Cool Application");
+        assertThat(client.getVersion()).isEqualTo("1.0.1");
         assertThat(client.getPlatform()).isEqualTo(Client.PLATFORM);
         assertThat(client.getDeviceId()).isEqualTo(deviceId);
 
