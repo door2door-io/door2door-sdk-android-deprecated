@@ -1,0 +1,17 @@
+io.door2door.analytics.api
+io.door2door.analytics.api.exception
+io.door2door.analytics.api.model
+io.door2door.analytics.base
+io.door2door.analytics.base.dagger
+io.door2door.analytics.base.model
+io.door2door.analytics.interactor
+io.door2door.analytics.interactor.dagger
+io.door2door.analytics.logger
+io.door2door.analytics.logger.dagger
+io.door2door.analytics.mapper
+io.door2door.analytics.mapper.dagger
+io.door2door.analytics.network
+io.door2door.analytics.network.dagger
+io.door2door.analytics.network.model
+io.door2door.analytics.validator
+io.door2door.analytics.validator.dagger
