@@ -37,4 +37,15 @@ public class NetworkConfiguratorTest {
         assertThat(baseUrlWithVersion).isEqualTo("https://events.d2di.net/v1/");
     }
 
+    @Test
+    public void shouldReturnDefaultTimeoutInSeconds() {
+        // given
+
+        // when
+        int defaultTimeoutInSeconds = networkConfigurator.getDefaultTimeoutInSeconds();
+
+        assertThat(defaultTimeoutInSeconds).isEqualTo(30);
+        // then
+    }
+
 }
