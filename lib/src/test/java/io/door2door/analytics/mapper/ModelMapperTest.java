@@ -14,6 +14,7 @@ import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.DeviceIdRetriever;
 import io.door2door.analytics.base.model.ModeOfTransportation;
+import io.door2door.analytics.network.model.Action;
 import io.door2door.analytics.network.model.Client;
 import io.door2door.analytics.network.model.Place;
 import io.door2door.analytics.network.model.PlaceAtTime;
@@ -55,6 +56,9 @@ public class ModelMapperTest {
         TripRequest eventRequest = modelMapper.mapSearchTripEventToTripEventRequest(event);
 
         // then
+        assertThat(eventRequest.getAction()).isEqualTo(Action.SEARCH);
+        assertThat(eventRequest.getTimestamp()).isNotNull();
+
         Client client = eventRequest.getActor().getClient();
         assertThat(client.getApplication()).isEqualTo("Cool Application");
         assertThat(client.getVersion()).isEqualTo("1.0.1");
