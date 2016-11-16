@@ -44,8 +44,8 @@ public class NetworkConfiguratorTest {
         // when
         int defaultTimeoutInSeconds = networkConfigurator.getDefaultTimeoutInSeconds();
 
-        assertThat(defaultTimeoutInSeconds).isEqualTo(30);
         // then
+        assertThat(defaultTimeoutInSeconds).isEqualTo(30);
     }
 
 }
