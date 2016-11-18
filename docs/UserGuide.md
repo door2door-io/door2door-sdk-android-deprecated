@@ -34,19 +34,19 @@ Here are all available initialization parameters and their default values:
 		<td>loggerEnabled</td>
 		<td>boolean</td>
 		<td>true</td>
-		<td>Flag for enabling/disabling the logs coming from the library. The logs can be useful for debuging during the development, it is recommended to disable the logging for production.</td>
+		<td>Flag for enabling/disabling the logs coming from the library. The logs can be useful for debugging during the development, it is recommended to disable the logging for production.</td>
 	</tr>
 	<tr>
 		<td>applicationName</td>
 		<td>String</td>
 		<td>null</td>
-		<td>The name of the application that is send to the mobility analytics backend. This value will be later associated with the data sent by the application and be visible in the mobility analytics dashboard.</td>
+		<td>The name of the application that is sent to the mobility analytics backend. This value will be later associated with the data sent by the application and be visible in the mobility analytics dashboard.</td>
 	</tr>
 	<tr>
 		<td>versionName</td>
 		<td>String</td>
 		<td>null</td>
-		<td>The version name that is send to the mobility analytics backend. This value will be later associated with the data sent by the application and be visible in the mobility analytics dashboard.</td>
+		<td>The version name that is sent to the mobility analytics backend. This value will be later associated with the data sent by the application and be visible in the mobility analytics dashboard.</td>
 	</tr>
 	<tr>
 		<td>environment</td>
@@ -56,7 +56,7 @@ Here are all available initialization parameters and their default values:
 	</tr>
 </table>
 
-It is recommended to create only one instance of the MobilityAnalytics object (have it as a singleton) and use it when recording events. If you are using a dependency injection framework, you should mark the MobilityAnalytics dependency as singleton. If you do not, you can have it as an application singleton in your application class. If you are confused this, have a look application calss of the provided [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-android) (it sets up MobilityAnalytics as application singleton). 
+It is recommended to create only one instance of the MobilityAnalytics object (have it as a singleton) and use it when recording events. If you are using a dependency injection framework, you should mark the MobilityAnalytics dependency as singleton. If you do not, you can have it as an application singleton in your application class. If you are confused by this, have a look application class of the provided [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-android) (it sets up MobilityAnalytics as application singleton). 
 
 ##### Using the SDK to recording events
 To record events you need reference to the MobilityAnalytics object. It contains a recordEvent(event) method for every type of event you can record:
