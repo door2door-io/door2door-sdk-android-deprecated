@@ -7,7 +7,7 @@ android:
   - tools # to get the new `repository-11.xml`
   - tools # to install Android SDK tools 25.1.x
   - platform-tools
-  - build-tools-25
+  - build-tools-25.0.0
   - android-25
   - extra-google-google_play_services
   - extra-google-m2repository
