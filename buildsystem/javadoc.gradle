@@ -4,5 +4,3 @@ task javadoc(type: Javadoc) {
     destinationDir = file("../docs/javadoc/")
     failOnError false
 }
-
-build.dependsOn javadoc
