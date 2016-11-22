@@ -3,11 +3,11 @@ io.door2door.analytics.api.exception
 io.door2door.analytics.api.model
 io.door2door.analytics.base
 io.door2door.analytics.base.dagger
+io.door2door.analytics.base.logger
+io.door2door.analytics.base.logger.dagger
 io.door2door.analytics.base.model
 io.door2door.analytics.interactor
 io.door2door.analytics.interactor.dagger
-io.door2door.analytics.logger
-io.door2door.analytics.logger.dagger
 io.door2door.analytics.mapper
 io.door2door.analytics.mapper.dagger
 io.door2door.analytics.network
