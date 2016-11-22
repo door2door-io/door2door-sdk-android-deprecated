@@ -9,7 +9,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.logger.Logger;
+import io.door2door.analytics.base.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
 import rx.Observable;
@@ -54,8 +54,7 @@ public class MobilityAnalyticsInteractorTest {
         // then
         verify(httpStack).sendTripEvent(event);
         verify(validator).validate(event);
-        verify(logger).d("MobilityAnalyticsInteractor",
-                "Event was sent to the backend successfully");
+        verify(logger).d("MobilityAnalyticsInteractor", "Event was recorded successfully");
     }
 
     @Test
@@ -70,8 +69,8 @@ public class MobilityAnalyticsInteractorTest {
 
         // then
         verify(httpStack).sendTripEvent(event);
-        verify(logger).e("MobilityAnalyticsInteractor",
-                "Event was not sent to the backend successfully", exception);
+        verify(logger).e("MobilityAnalyticsInteractor", "Event was not recorded successfully",
+                exception);
     }
 
 }

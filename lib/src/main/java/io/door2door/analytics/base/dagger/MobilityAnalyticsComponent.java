@@ -6,7 +6,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import io.door2door.analytics.api.MobilityAnalytics;
 import io.door2door.analytics.interactor.dagger.InteractorModule;
-import io.door2door.analytics.logger.dagger.LoggerModule;
+import io.door2door.analytics.base.logger.dagger.LoggerModule;
 import io.door2door.analytics.mapper.dagger.MapperModule;
 import io.door2door.analytics.network.dagger.NetworkModule;
 import io.door2door.analytics.validator.dagger.ValidatorModule;

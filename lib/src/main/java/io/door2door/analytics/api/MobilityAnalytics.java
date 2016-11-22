@@ -10,12 +10,14 @@ import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.dagger.DaggerUtil;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
-import io.door2door.analytics.logger.Logger;
+import io.door2door.analytics.base.logger.Logger;
 
 /**
  * Class responsible interaction by the integrators of the SDK.
  */
 public class MobilityAnalytics {
+
+    private static final String TAG = MobilityAnalytics.class.getSimpleName();
 
     @Inject
     MobilityAnalyticsInteractor mobilityAnalyticsInteractor;
@@ -51,6 +53,7 @@ public class MobilityAnalytics {
      * @throws ValidationException if the sent event is not valid.
      */
     public void recordEvent(SearchTripEvent event) throws ValidationException {
+        logger.d(TAG, "Search trip event about to be recorded");
         mobilityAnalyticsInteractor.processTripEvent(event);
     }
 }

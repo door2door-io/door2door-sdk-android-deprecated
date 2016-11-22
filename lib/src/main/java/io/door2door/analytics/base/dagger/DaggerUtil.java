@@ -5,7 +5,7 @@ import android.content.Context;
 import io.door2door.analytics.api.MobilityAnalytics;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.interactor.dagger.InteractorModule;
-import io.door2door.analytics.logger.dagger.LoggerModule;
+import io.door2door.analytics.base.logger.dagger.LoggerModule;
 import io.door2door.analytics.mapper.dagger.MapperModule;
 import io.door2door.analytics.network.dagger.NetworkModule;
 
