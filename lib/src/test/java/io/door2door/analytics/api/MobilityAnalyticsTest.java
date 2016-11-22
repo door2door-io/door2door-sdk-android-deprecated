@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations;
 import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
-import io.door2door.analytics.logger.Logger;
+import io.door2door.analytics.base.logger.Logger;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

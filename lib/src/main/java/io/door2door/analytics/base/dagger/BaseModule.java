@@ -17,6 +17,7 @@ import io.door2door.analytics.base.DataPersister;
 import io.door2door.analytics.base.DateFormattingHelper;
 import io.door2door.analytics.base.DeviceIdRetriever;
 import io.door2door.analytics.base.StringTypeAdapter;
+import io.door2door.analytics.base.logger.Logger;
 
 /**
  * Dagger module for providing the base dependencies.
@@ -76,24 +77,27 @@ public class BaseModule {
      *
      * @param gson              the gson
      * @param sharedPreferences the shared preferences
+     * @param logger            the logger
      * @return the provided {@link DataPersister}
      */
     @Provides
     @Singleton
-    DataPersister provideDataPersister(Gson gson, SharedPreferences sharedPreferences) {
-        return new DataPersister(gson, sharedPreferences);
+    DataPersister provideDataPersister(Gson gson, SharedPreferences sharedPreferences,
+                                       Logger logger) {
+        return new DataPersister(gson, sharedPreferences, logger);
     }
 
     /**
      * Dagger 2 provider method.
      *
      * @param dataPersister the data persister
+     * @param logger        the logger
      * @return the provided {@link DeviceIdRetriever}
      */
     @Provides
     @Singleton
-    DeviceIdRetriever provideDeviceIdRetriever(DataPersister dataPersister) {
-        return new DeviceIdRetriever(dataPersister);
+    DeviceIdRetriever provideDeviceIdRetriever(DataPersister dataPersister, Logger logger) {
+        return new DeviceIdRetriever(dataPersister, logger);
     }
 
     /**

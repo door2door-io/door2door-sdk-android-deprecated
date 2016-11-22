@@ -1,7 +1,7 @@
 package io.door2door.analytics.interactor;
 
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.logger.Logger;
+import io.door2door.analytics.base.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
 import rx.Scheduler;
@@ -48,12 +48,12 @@ public class MobilityAnalyticsInteractor {
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void baseResponse) {
-                        logger.d(TAG, "Event was sent to the backend successfully");
+                        logger.d(TAG, "Event was recorded successfully");
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        logger.e(TAG, "Event was not sent to the backend successfully", throwable);
+                        logger.e(TAG, "Event was not recorded successfully", throwable);
                     }
                 });
     }

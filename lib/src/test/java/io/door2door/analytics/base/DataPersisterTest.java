@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import io.door2door.analytics.base.logger.Logger;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -21,12 +23,16 @@ import static org.mockito.Mockito.when;
  */
 public class DataPersisterTest {
 
+    private  static final String TAG = "DataPersister";
+
     private DataPersister dataPersister;
     private Gson gson;
     @Mock
     private SharedPreferences sharedPreferences;
     @Mock
     private SharedPreferences.Editor editor;
+    @Mock
+    private Logger logger;
 
     @Before
     public void setUp() {
@@ -40,7 +46,7 @@ public class DataPersisterTest {
         when(sharedPreferences.edit()).thenReturn(editor);
         when(editor.putString(anyString(), anyString())).thenReturn(editor);
         when(editor.remove(anyString())).thenReturn(editor);
-        dataPersister = new DataPersister(gson, sharedPreferences);
+        dataPersister = new DataPersister(gson, sharedPreferences, logger);
     }
 
     @Test
@@ -56,6 +62,7 @@ public class DataPersisterTest {
         // then
         verify(editor).putString(key, expectedRawData);
         verify(editor).apply();
+        verify(logger).d(TAG, "Value for key [someKey] saved");
     }
 
     @Test
@@ -70,6 +77,7 @@ public class DataPersisterTest {
 
         // then
         assertThat(data).isNotNull();
+        verify(logger).d(TAG, "Value for key [someKey] read");
     }
 
     @Test
@@ -83,6 +91,7 @@ public class DataPersisterTest {
 
         // then
         assertThat(contains).isTrue();
+        verify(logger).d(TAG, "Value for key [someKey] about to be checked for existence");
     }
 
     @Test
@@ -96,6 +105,7 @@ public class DataPersisterTest {
         // then
         verify(editor).remove(key);
         verify(editor).apply();
+        verify(logger).d(TAG, "Value for key [someKey] deleted");
     }
 
 }

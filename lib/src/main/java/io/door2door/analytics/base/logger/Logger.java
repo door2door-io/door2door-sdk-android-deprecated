@@ -1,4 +1,4 @@
-package io.door2door.analytics.logger;
+package io.door2door.analytics.base.logger;
 
 import android.util.Log;
 
