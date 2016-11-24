@@ -8,8 +8,8 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import io.door2door.analytics.api.model.CreateTripEvent;
-import io.door2door.analytics.logger.Logger;
+import io.door2door.analytics.api.model.SearchTripEvent;
+import io.door2door.analytics.base.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
 import rx.Observable;
@@ -45,7 +45,7 @@ public class MobilityAnalyticsInteractorTest {
     @Test
     public void shouldSendEvent() {
         // given
-        CreateTripEvent event = mock(CreateTripEvent.class);
+        SearchTripEvent event = mock(SearchTripEvent.class);
         when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>just(null));
 
         // when
@@ -54,14 +54,13 @@ public class MobilityAnalyticsInteractorTest {
         // then
         verify(httpStack).sendTripEvent(event);
         verify(validator).validate(event);
-        verify(logger).d("MobilityAnalyticsInteractor",
-                "Event was sent to the backend successfully");
+        verify(logger).d("MobilityAnalyticsInteractor", "Event was recorded successfully");
     }
 
     @Test
     public void shouldHandleErrorWhileSendingEvent() {
         // given
-        CreateTripEvent event = mock(CreateTripEvent.class);
+        SearchTripEvent event = mock(SearchTripEvent.class);
         RuntimeException exception = new RuntimeException();
         when(httpStack.sendTripEvent(event)).thenReturn(Observable.<Void>error(exception));
 
@@ -70,8 +69,8 @@ public class MobilityAnalyticsInteractorTest {
 
         // then
         verify(httpStack).sendTripEvent(event);
-        verify(logger).e("MobilityAnalyticsInteractor",
-                "Event was not sent to the backend successfully", exception);
+        verify(logger).e("MobilityAnalyticsInteractor", "Event was not recorded successfully",
+                exception);
     }
 
 }

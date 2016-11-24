@@ -6,7 +6,7 @@ package io.door2door.analytics.network.model;
 public class Client {
 
     /** The platform for the SDK client. **/
-    public static final String PLATFORM = "Android";
+    public static final String PLATFORM = "android";
 
     private String application;
     private String deviceId;

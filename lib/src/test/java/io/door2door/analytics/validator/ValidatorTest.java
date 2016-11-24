@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import io.door2door.analytics.DummyModelsCreatorUtil;
 import io.door2door.analytics.api.exception.ValidationException;
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -29,13 +29,13 @@ public class ValidatorTest {
         ValidationException exception = validate(null);
 
         // then
-        assertException(exception, "CreateTripEvent", "The root event object can't be null");
+        assertException(exception, "SearchTripEvent", "The root event object can't be null");
     }
 
     @Test
     public void shouldNotFailForValidObject() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
                 .build();
 
         // when
@@ -45,184 +45,186 @@ public class ValidatorTest {
     }
 
     @Test()
-    public void shouldFailForNullOriginLatitude() {
+    public void shouldFailForNullDepartureLatitude() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLatitude(null)
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setDepartureLatitude(null)
                 .build();
 
         // when
         ValidationException exception = validate(event);
 
         // then
-        assertException(exception, "CreateTripEvent.originLatitude", "Latitude must not be null");
-    }
-
-    @Test()
-    public void shouldFailForOriginLatitudeBellowMinus90() {
-        // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLatitude(-100.123)
-                .build();
-
-        // when
-        ValidationException exception = validate(event);
-
-        // then
-        assertException(exception, "CreateTripEvent.originLatitude",
-                "Latitude must not be bellow -90");
-    }
-
-    @Test()
-    public void shouldFailForOriginLatitudeAbove90() {
-        // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLatitude(100.123)
-                .build();
-
-        // when
-        ValidationException exception = validate(event);
-
-        // then
-        assertException(exception, "CreateTripEvent.originLatitude",
-                "Latitude must not be above 90");
-    }
-
-    @Test
-    public void shouldFailForNullOriginLongitude() {
-        // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLongitude(null)
-                .build();
-
-        // when
-        ValidationException exception = validate(event);
-
-        // then
-        assertException(exception, "CreateTripEvent.originLongitude", "Longitude must not be null");
-    }
-
-    @Test
-    public void shouldFailForOriginLongitudeBellowMinus180() {
-        // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLongitude(-200.123)
-                .build();
-
-        // when
-        ValidationException exception = validate(event);
-
-        // then
-        assertException(exception, "CreateTripEvent.originLongitude",
-                "Longitude must not be bellow -180");
-    }
-
-    @Test
-    public void shouldFailForOriginLongitudeAbove180() {
-        // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setOriginLongitude(200.123)
-                .build();
-
-        // when
-        ValidationException exception = validate(event);
-
-        // then
-        assertException(exception, "CreateTripEvent.originLongitude",
-                "Longitude must not be above 180");
-    }
-
-    @Test
-    public void shouldFailForNullDestinationLatitude() {
-        // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLatitude(null)
-                .build();
-
-        // when
-        ValidationException exception = validate(event);
-
-        // then
-        assertException(exception, "CreateTripEvent.destinationLatitude",
+        assertException(exception, "SearchTripEvent.departureLatitude",
                 "Latitude must not be null");
     }
 
     @Test()
-    public void shouldFailForDestinationLatitudeBellowMinus90() {
+    public void shouldFailForDepartureLatitudeBellowMinus90() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLatitude(-100.123)
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setDepartureLatitude(-100.123)
                 .build();
 
         // when
         ValidationException exception = validate(event);
 
         // then
-        assertException(exception, "CreateTripEvent.destinationLatitude",
+        assertException(exception, "SearchTripEvent.departureLatitude",
                 "Latitude must not be bellow -90");
     }
 
     @Test()
-    public void shouldFailForDestinationLatitudeAbove90() {
+    public void shouldFailForDepartureLatitudeAbove90() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLatitude(100.123)
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setDepartureLatitude(100.123)
                 .build();
 
         // when
         ValidationException exception = validate(event);
 
         // then
-        assertException(exception, "CreateTripEvent.destinationLatitude",
+        assertException(exception, "SearchTripEvent.departureLatitude",
                 "Latitude must not be above 90");
     }
 
     @Test
-    public void shouldFailForNullDestinationLongitude() {
+    public void shouldFailForNullDepartureLongitude() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLongitude(null)
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setDepartureLongitude(null)
                 .build();
 
         // when
         ValidationException exception = validate(event);
 
         // then
-        assertException(exception, "CreateTripEvent.destinationLongitude",
+        assertException(exception, "SearchTripEvent.departureLongitude",
                 "Longitude must not be null");
     }
 
     @Test
-    public void shouldFailForDestinationLongitudeBellowMinus180() {
+    public void shouldFailForDepartureLongitudeBellowMinus180() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLongitude(-200.123)
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setDepartureLongitude(-200.123)
                 .build();
 
         // when
         ValidationException exception = validate(event);
 
         // then
-        assertException(exception, "CreateTripEvent.destinationLongitude",
+        assertException(exception, "SearchTripEvent.departureLongitude",
                 "Longitude must not be bellow -180");
     }
 
     @Test
-    public void shouldFailForDestinationLongitudeAbove180() {
+    public void shouldFailForDepartureLongitudeAbove180() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
-                .setDestinationLongitude(200.123)
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setDepartureLongitude(200.123)
                 .build();
 
         // when
         ValidationException exception = validate(event);
 
         // then
-        assertException(exception, "CreateTripEvent.destinationLongitude",
+        assertException(exception, "SearchTripEvent.departureLongitude",
                 "Longitude must not be above 180");
     }
 
-    private ValidationException validate(CreateTripEvent event) {
+    @Test
+    public void shouldFailForNullArrivalLatitude() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setArrivalLatitude(null)
+                .build();
+
+        // when
+        ValidationException exception = validate(event);
+
+        // then
+        assertException(exception, "SearchTripEvent.arrivalLatitude",
+                "Latitude must not be null");
+    }
+
+    @Test()
+    public void shouldFailForArrivalLatitudeBellowMinus90() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setArrivalLatitude(-100.123)
+                .build();
+
+        // when
+        ValidationException exception = validate(event);
+
+        // then
+        assertException(exception, "SearchTripEvent.arrivalLatitude",
+                "Latitude must not be bellow -90");
+    }
+
+    @Test()
+    public void shouldFailForArrivalLatitudeAbove90() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setArrivalLatitude(100.123)
+                .build();
+
+        // when
+        ValidationException exception = validate(event);
+
+        // then
+        assertException(exception, "SearchTripEvent.arrivalLatitude",
+                "Latitude must not be above 90");
+    }
+
+    @Test
+    public void shouldFailForNullArrivalLongitude() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setArrivalLongitude(null)
+                .build();
+
+        // when
+        ValidationException exception = validate(event);
+
+        // then
+        assertException(exception, "SearchTripEvent.arrivalLongitude",
+                "Longitude must not be null");
+    }
+
+    @Test
+    public void shouldFailForArrivalLongitudeBellowMinus180() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setArrivalLongitude(-200.123)
+                .build();
+
+        // when
+        ValidationException exception = validate(event);
+
+        // then
+        assertException(exception, "SearchTripEvent.arrivalLongitude",
+                "Longitude must not be bellow -180");
+    }
+
+    @Test
+    public void shouldFailForArrivalLongitudeAbove180() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
+                .setArrivalLongitude(200.123)
+                .build();
+
+        // when
+        ValidationException exception = validate(event);
+
+        // then
+        assertException(exception, "SearchTripEvent.arrivalLongitude",
+                "Longitude must not be above 180");
+    }
+
+    private ValidationException validate(SearchTripEvent event) {
         ValidationException exception = null;
         try {
             validator.validate(event);

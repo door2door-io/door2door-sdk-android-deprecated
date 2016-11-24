@@ -1,16 +1,20 @@
 package io.door2door.analytics.mapper;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.DeviceIdRetriever;
+import io.door2door.analytics.base.model.ModeOfTransportation;
 import io.door2door.analytics.network.model.Client;
 import io.door2door.analytics.network.model.Person;
 import io.door2door.analytics.network.model.Place;
+import io.door2door.analytics.network.model.PlaceAtTime;
 import io.door2door.analytics.network.model.Trip;
 import io.door2door.analytics.network.model.TripRequest;
-import io.door2door.analytics.network.model.TripStage;
+import io.door2door.analytics.network.model.Action;
 
 /**
  * Mapper class for mapping between models.
@@ -33,18 +37,18 @@ public class ModelMapper {
     }
 
     /**
-     * Maps model from {@link CreateTripEvent} to {@link TripRequest}.
+     * Maps model from {@link SearchTripEvent} to {@link TripRequest}.
      *
-     * @param createTripEvent the createTripEvent
+     * @param searchTripEvent the searchTripEvent
      * @return the {@link TripRequest} result
      */
-    public TripRequest mapCreateTripEventToTripEventRequest(CreateTripEvent createTripEvent) {
-        Trip trip = mapCreateTripEventToTrip(createTripEvent);
+    public TripRequest mapSearchTripEventToTripEventRequest(SearchTripEvent searchTripEvent) {
+        Trip trip = mapSearchTripEventToTrip(searchTripEvent);
 
         Person actor = setupPerson();
 
         TripRequest tripRequest = new TripRequest();
-        tripRequest.setStage(TripStage.CREATE);
+        tripRequest.setAction(Action.SEARCH);
         tripRequest.setTrip(trip);
         tripRequest.setTimestamp(new Date());
         tripRequest.setActor(actor);
@@ -63,28 +67,40 @@ public class ModelMapper {
         return actor;
     }
 
-    private Trip mapCreateTripEventToTrip(CreateTripEvent createTripEvent) {
-        Place origin = new Place();
-        origin.setCity(createTripEvent.getOriginCity());
-        origin.setCountry(createTripEvent.getOriginCountry());
-        origin.setName(createTripEvent.getOriginName());
-        origin.setLatitude(createTripEvent.getOriginLatitude());
-        origin.setLongitude(createTripEvent.getOriginLongitude());
-        origin.setPostalCode(createTripEvent.getOriginPostalCode());
-        origin.setStreet(createTripEvent.getOriginStreet());
+    private Trip mapSearchTripEventToTrip(SearchTripEvent searchTripEvent) {
+        Place departure = new Place();
+        departure.setCity(searchTripEvent.getDepartureCity());
+        departure.setCountry(searchTripEvent.getDepartureCountry());
+        departure.setName(searchTripEvent.getDepartureName());
+        departure.setLatitude(searchTripEvent.getDepartureLatitude());
+        departure.setLongitude(searchTripEvent.getDepartureLongitude());
+        departure.setPostalCode(searchTripEvent.getDeparturePostalCode());
+        departure.setStreet(searchTripEvent.getDepartureStreet());
 
-        Place destination = new Place();
-        destination.setCity(createTripEvent.getDestinationCity());
-        destination.setCountry(createTripEvent.getDestinationCountry());
-        destination.setName(createTripEvent.getDestinationName());
-        destination.setLatitude(createTripEvent.getDestinationLatitude());
-        destination.setLongitude(createTripEvent.getDestinationLongitude());
-        destination.setPostalCode(createTripEvent.getDestinationPostalCode());
-        destination.setStreet(createTripEvent.getDestinationStreet());
+        PlaceAtTime departureAtTime = new PlaceAtTime();
+        departureAtTime.setTimestamp(searchTripEvent.getDepartureTimestamp());
+        departureAtTime.setPlace(departure);
+
+        Place arrival = new Place();
+        arrival.setCity(searchTripEvent.getArrivalCity());
+        arrival.setCountry(searchTripEvent.getArrivalCountry());
+        arrival.setName(searchTripEvent.getArrivalName());
+        arrival.setLatitude(searchTripEvent.getArrivalLatitude());
+        arrival.setLongitude(searchTripEvent.getArrivalLongitude());
+        arrival.setPostalCode(searchTripEvent.getArrivalPostalCode());
+        arrival.setStreet(searchTripEvent.getArrivalStreet());
+
+        PlaceAtTime arrivalAtTime = new PlaceAtTime();
+        arrivalAtTime.setTimestamp(searchTripEvent.getArrivalTimestamp());
+        arrivalAtTime.setPlace(arrival);
+
+        List<ModeOfTransportation> modeOfTransportationList = new ArrayList<>();
+        modeOfTransportationList.addAll(searchTripEvent.getModeOfTransportationList());
 
         Trip trip = new Trip();
-        trip.setDestination(destination);
-        trip.setOrigin(origin);
+        trip.setDeparture(departureAtTime);
+        trip.setArrival(arrivalAtTime);
+        trip.setModeOfTransportation(modeOfTransportationList);
         return trip;
     }
 }

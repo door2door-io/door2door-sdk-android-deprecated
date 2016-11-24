@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
-import io.door2door.analytics.logger.Logger;
+import io.door2door.analytics.base.logger.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
 import rx.schedulers.Schedulers;

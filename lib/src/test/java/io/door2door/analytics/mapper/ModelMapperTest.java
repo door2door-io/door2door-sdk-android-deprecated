@@ -6,12 +6,19 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 
+import java.util.Date;
+import java.util.List;
+
 import io.door2door.analytics.DummyModelsCreatorUtil;
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.DeviceIdRetriever;
+import io.door2door.analytics.base.model.ModeOfTransportation;
+import io.door2door.analytics.network.model.Action;
 import io.door2door.analytics.network.model.Client;
 import io.door2door.analytics.network.model.Place;
+import io.door2door.analytics.network.model.PlaceAtTime;
+import io.door2door.analytics.network.model.Trip;
 import io.door2door.analytics.network.model.TripRequest;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -31,47 +38,63 @@ public class ModelMapperTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        InitializationParameters initializationParameters = new InitializationParameters();
-        initializationParameters.setApplicationName("someApplication");
-        initializationParameters.setVersionName("v1.0.1");
+        InitializationParameters initializationParameters =
+                DummyModelsCreatorUtil.getDummyInitializationParametersBuilder()
+                        .build();
         modelMapper = new ModelMapper(initializationParameters, deviceIdRetriever);
     }
 
     @Test
     public void shouldMapEventToEventRequest() {
         // given
-        CreateTripEvent event = DummyModelsCreatorUtil.getDummyCreateTripEventBuilder()
+        SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
                 .build();
         String deviceId = "f33f79f4-9d06-11e6-80f5-76304dec7eb7";
         when(deviceIdRetriever.getDeviceId()).thenReturn(deviceId);
 
         // when
-        TripRequest eventRequest = modelMapper.mapCreateTripEventToTripEventRequest(event);
+        TripRequest eventRequest = modelMapper.mapSearchTripEventToTripEventRequest(event);
 
         // then
+        assertThat(eventRequest.getAction()).isEqualTo(Action.SEARCH);
+        assertThat(eventRequest.getTimestamp()).isNotNull();
+
         Client client = eventRequest.getActor().getClient();
-        assertThat(client.getApplication()).isEqualTo("someApplication");
-        assertThat(client.getVersion()).isEqualTo("v1.0.1");
+        assertThat(client.getApplication()).isEqualTo("Cool Application");
+        assertThat(client.getVersion()).isEqualTo("1.0.1");
         assertThat(client.getPlatform()).isEqualTo(Client.PLATFORM);
         assertThat(client.getDeviceId()).isEqualTo(deviceId);
 
-        Place origin = eventRequest.getTrip().getOrigin();
-        assertThat(origin.getLatitude()).isEqualTo(52.529919);
-        assertThat(origin.getLongitude()).isEqualTo(13.403067);
-        assertThat(origin.getName()).isEqualTo("Door2Door HQ");
-        assertThat(origin.getStreet()).isEqualTo("Torstrasse 109");
-        assertThat(origin.getCity()).isEqualTo("Berlin");
-        assertThat(origin.getPostalCode()).isEqualTo("10119");
-        assertThat(origin.getCountry()).isEqualTo("Germany");
+        Trip trip = eventRequest.getTrip();
+        List<ModeOfTransportation> modeOfTransportation = trip.getModeOfTransportation();
+        assertThat(modeOfTransportation.size()).isEqualTo(2);
+        assertThat(modeOfTransportation.get(0)).isEqualTo(ModeOfTransportation.BIKE_SHARING);
+        assertThat(modeOfTransportation.get(1)).isEqualTo(ModeOfTransportation.CAR_SHARING);
 
-        Place destination = eventRequest.getTrip().getDestination();
-        assertThat(destination.getLatitude()).isEqualTo(52.522258);
-        assertThat(destination.getLongitude()).isEqualTo(13.412678);
-        assertThat(destination.getName()).isEqualTo("Alexanderplatz");
-        assertThat(destination.getStreet()).isEqualTo("AlexanderplatzStreet");
-        assertThat(destination.getCity()).isEqualTo("BerlinCity");
-        assertThat(destination.getPostalCode()).isEqualTo("10178");
-        assertThat(destination.getCountry()).isEqualTo("GermanyCountry");
+
+        PlaceAtTime departureAtTime = trip.getDeparture();
+        assertThat(departureAtTime.getTimestamp()).isEqualTo(new Date(1479126912363L));
+
+        Place departure = departureAtTime.getPlace();
+        assertThat(departure.getLatitude()).isEqualTo(52.529919);
+        assertThat(departure.getLongitude()).isEqualTo(13.403067);
+        assertThat(departure.getName()).isEqualTo("Door2Door HQ");
+        assertThat(departure.getStreet()).isEqualTo("Torstrasse 109");
+        assertThat(departure.getCity()).isEqualTo("Berlin");
+        assertThat(departure.getPostalCode()).isEqualTo("10119");
+        assertThat(departure.getCountry()).isEqualTo("Germany");
+
+        PlaceAtTime arrivalAtTime = trip.getArrival();
+        assertThat(arrivalAtTime.getTimestamp()).isEqualTo(new Date(1479126932489L));
+
+        Place arrival = arrivalAtTime.getPlace();
+        assertThat(arrival.getLatitude()).isEqualTo(52.522258);
+        assertThat(arrival.getLongitude()).isEqualTo(13.412678);
+        assertThat(arrival.getName()).isEqualTo("Alexanderplatz");
+        assertThat(arrival.getStreet()).isEqualTo("AlexanderplatzStreet");
+        assertThat(arrival.getCity()).isEqualTo("BerlinCity");
+        assertThat(arrival.getPostalCode()).isEqualTo("10178");
+        assertThat(arrival.getCountry()).isEqualTo("GermanyCountry");
     }
 
 }

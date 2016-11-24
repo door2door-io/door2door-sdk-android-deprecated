@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.door2door.analytics.api.model.CreateTripEvent;
+import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.mapper.ModelMapper;
 import io.door2door.analytics.network.model.TripRequest;
 
@@ -35,8 +35,8 @@ public class HttpStackTest {
     public void shouldSendEvent() {
         // given
         TripRequest tripRequest = new TripRequest();
-        CreateTripEvent event = mock(CreateTripEvent.class);
-        when(modelMapper.mapCreateTripEventToTripEventRequest(event)).thenReturn(tripRequest);
+        SearchTripEvent event = mock(SearchTripEvent.class);
+        when(modelMapper.mapSearchTripEventToTripEventRequest(event)).thenReturn(tripRequest);
 
         // when
         httpStack.sendTripEvent(event);

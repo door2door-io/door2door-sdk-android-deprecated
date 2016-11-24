@@ -3,7 +3,9 @@ package io.door2door.analytics.network;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.door2door.analytics.DummyModelsCreatorUtil;
 import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.base.model.Environment;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -17,7 +19,10 @@ public class NetworkConfiguratorTest {
 
     @Before
     public void setUp() {
-        InitializationParameters initializationParameters = new InitializationParameters();
+        InitializationParameters initializationParameters =
+                DummyModelsCreatorUtil.getDummyInitializationParametersBuilder()
+                        .setEnvironment(Environment.PRODUCTION)
+                        .build();
         networkConfigurator = new NetworkConfigurator(initializationParameters);
     }
 
@@ -29,7 +34,18 @@ public class NetworkConfiguratorTest {
         String baseUrlWithVersion = networkConfigurator.getBaseUrlWithVersion();
 
         // then
-        assertThat(baseUrlWithVersion).isEqualTo("https://events-dev.d2di.net/v1/");
+        assertThat(baseUrlWithVersion).isEqualTo("https://events.d2di.net/v1/");
+    }
+
+    @Test
+    public void shouldReturnDefaultTimeoutInSeconds() {
+        // given
+
+        // when
+        int defaultTimeoutInSeconds = networkConfigurator.getDefaultTimeoutInSeconds();
+
+        // then
+        assertThat(defaultTimeoutInSeconds).isEqualTo(30);
     }
 
 }
