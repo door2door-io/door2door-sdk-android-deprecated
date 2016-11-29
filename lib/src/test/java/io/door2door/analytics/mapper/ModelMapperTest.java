@@ -45,7 +45,7 @@ public class ModelMapperTest {
     }
 
     @Test
-    public void shouldMapEventToEventRequest() {
+    public void shouldMapSearchTripEventToTripEventRequest() {
         // given
         SearchTripEvent event = DummyModelsCreatorUtil.getDummySearchTripEventBuilder()
                 .build();
@@ -95,6 +95,58 @@ public class ModelMapperTest {
         assertThat(arrival.getCity()).isEqualTo("BerlinCity");
         assertThat(arrival.getPostalCode()).isEqualTo("10178");
         assertThat(arrival.getCountry()).isEqualTo("GermanyCountry");
+    }
+
+    @Test
+    public void shouldMapSearchTripEventToTripEventRequestWithOnlyRequiredFields() {
+        // given
+        SearchTripEvent event = DummyModelsCreatorUtil
+                .getDummySearchTripEventBuilderWithOnlyRequiredFields()
+                .build();
+        String deviceId = "f33f79f4-9d06-11e6-80f5-76304dec7eb7";
+        when(deviceIdRetriever.getDeviceId()).thenReturn(deviceId);
+
+        // when
+        TripRequest eventRequest = modelMapper.mapSearchTripEventToTripEventRequest(event);
+
+        // then
+        assertThat(eventRequest.getAction()).isEqualTo(Action.SEARCH);
+        assertThat(eventRequest.getTimestamp()).isNotNull();
+
+        Client client = eventRequest.getActor().getClient();
+        assertThat(client.getApplication()).isEqualTo("Cool Application");
+        assertThat(client.getVersion()).isEqualTo("1.0.1");
+        assertThat(client.getPlatform()).isEqualTo(Client.PLATFORM);
+        assertThat(client.getDeviceId()).isEqualTo(deviceId);
+
+        Trip trip = eventRequest.getTrip();
+        List<ModeOfTransportation> modeOfTransportation = trip.getModeOfTransportation();
+        assertThat(modeOfTransportation.size()).isEqualTo(0);
+
+
+        PlaceAtTime departureAtTime = trip.getDeparture();
+        assertThat(departureAtTime.getTimestamp()).isNull();
+
+        Place departure = departureAtTime.getPlace();
+        assertThat(departure.getLatitude()).isEqualTo(52.529919);
+        assertThat(departure.getLongitude()).isEqualTo(13.403067);
+        assertThat(departure.getName()).isNull();
+        assertThat(departure.getStreet()).isNull();
+        assertThat(departure.getCity()).isNull();
+        assertThat(departure.getPostalCode()).isNull();
+        assertThat(departure.getCountry()).isNull();
+
+        PlaceAtTime arrivalAtTime = trip.getArrival();
+        assertThat(arrivalAtTime.getTimestamp()).isNull();
+
+        Place arrival = arrivalAtTime.getPlace();
+        assertThat(arrival.getLatitude()).isEqualTo(52.522258);
+        assertThat(arrival.getLongitude()).isEqualTo(13.412678);
+        assertThat(arrival.getName()).isNull();
+        assertThat(arrival.getStreet()).isNull();
+        assertThat(arrival.getCity()).isNull();
+        assertThat(arrival.getPostalCode()).isNull();
+        assertThat(arrival.getCountry()).isNull();
     }
 
 }
