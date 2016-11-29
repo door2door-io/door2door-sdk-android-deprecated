@@ -44,6 +44,20 @@ public class DummyModelsCreatorUtil {
     }
 
     /**
+     * Sets dummy search trip event builder.
+     *
+     * @return the dummy search trip event builder
+     */
+    public static SearchTripEvent.SearchTripEventBuilder
+    getDummySearchTripEventBuilderWithOnlyRequiredFields() {
+        return new SearchTripEvent.SearchTripEventBuilder()
+                .setDepartureLatitude(52.529919)
+                .setDepartureLongitude(13.403067)
+                .setArrivalLatitude(52.522258)
+                .setArrivalLongitude(13.412678);
+    }
+
+    /**
      * Gets dummy initialization parameters builder.
      *
      * @return the dummy initialization parameters builder

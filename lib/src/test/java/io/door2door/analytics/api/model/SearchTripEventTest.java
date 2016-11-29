@@ -18,14 +18,10 @@ public class SearchTripEventTest {
 
     private SearchTripEvent.SearchTripEventBuilder builder;
 
-    @Before
-    public void setUp() {
-        builder = DummyModelsCreatorUtil.getDummySearchTripEventBuilder();
-    }
-
     @Test
-    public void shouldBuildSearchTripEvent() {
+    public void shouldBuildSearchTripEventWithAllValues() {
         // given
+        builder = DummyModelsCreatorUtil.getDummySearchTripEventBuilder();
 
         // when
         SearchTripEvent searchTripEvent = builder.build();
@@ -50,6 +46,34 @@ public class SearchTripEventTest {
         assertThat(searchTripEvent.getModeOfTransportationList().size()).isEqualTo(2);
         assertThat(searchTripEvent.getModeOfTransportationList().get(0)).isEqualTo(BIKE_SHARING);
         assertThat(searchTripEvent.getModeOfTransportationList().get(1)).isEqualTo(CAR_SHARING);
+    }
+
+    @Test
+    public void shouldBuildSearchTripEventWithOnlyRequiredValues() {
+        // given
+        builder = DummyModelsCreatorUtil.getDummySearchTripEventBuilderWithOnlyRequiredFields();
+
+        // when
+        SearchTripEvent searchTripEvent = builder.build();
+
+        // then
+        assertThat(searchTripEvent.getDepartureTimestamp()).isNull();
+        assertThat(searchTripEvent.getDepartureLatitude()).isEqualTo(52.529919);
+        assertThat(searchTripEvent.getDepartureLongitude()).isEqualTo(13.403067);
+        assertThat(searchTripEvent.getDepartureName()).isNull();
+        assertThat(searchTripEvent.getDepartureStreet()).isNull();
+        assertThat(searchTripEvent.getDepartureCity()).isNull();
+        assertThat(searchTripEvent.getDeparturePostalCode()).isNull();
+        assertThat(searchTripEvent.getDepartureCountry()).isNull();
+        assertThat(searchTripEvent.getArrivalTimestamp()).isNull();
+        assertThat(searchTripEvent.getArrivalLatitude()).isEqualTo(52.522258);
+        assertThat(searchTripEvent.getArrivalLongitude()).isEqualTo(13.412678);
+        assertThat(searchTripEvent.getArrivalName()).isNull();
+        assertThat(searchTripEvent.getArrivalStreet()).isNull();
+        assertThat(searchTripEvent.getArrivalCity()).isNull();
+        assertThat(searchTripEvent.getArrivalPostalCode()).isNull();
+        assertThat(searchTripEvent.getArrivalCountry()).isNull();
+        assertThat(searchTripEvent.getModeOfTransportationList().size()).isEqualTo(0);
     }
 
 }
