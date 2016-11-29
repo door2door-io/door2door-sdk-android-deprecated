@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
-import io.door2door.analytics.base.logger.Logger;
-
 
 /**
  * Class responsible for persisting data.

@@ -9,6 +9,8 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLog;
 
+import io.door2door.analytics.base.Logger;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
