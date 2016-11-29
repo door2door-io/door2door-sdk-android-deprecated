@@ -1,7 +1,7 @@
 package io.door2door.analytics.interactor;
 
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.base.logger.Logger;
+import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
 import rx.Scheduler;
