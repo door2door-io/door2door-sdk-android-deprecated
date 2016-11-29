@@ -1,6 +1,5 @@
 package io.door2door.analytics.api.model;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
