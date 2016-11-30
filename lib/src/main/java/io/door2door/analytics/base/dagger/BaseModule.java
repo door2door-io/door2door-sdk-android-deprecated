@@ -125,7 +125,6 @@ public class BaseModule {
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .setDateFormat(dateFormattingHelper.getDefaultDateFormat())
             .registerTypeAdapter(String.class, new StringTypeAdapter())
-            .serializeNulls()
             .create();
     }
 }

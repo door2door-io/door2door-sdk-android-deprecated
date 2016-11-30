@@ -51,14 +51,15 @@ public class SearchTripEvent {
      * @param modeOfTransportationList the mode of transportation list
      */
     SearchTripEvent(Date departureTimestamp, Double departureLatitude,
-                           Double departureLongitude, String departureName,
-                           String departureCity, String departureStreet, String departurePostalCode,
-                           String departureCountry, Date arrivalTimestamp, Double arrivalLatitude,
-                           Double arrivalLongitude, String arrivalName,
-                           String arrivalCity, String arrivalStreet,
-                           String arrivalPostalCode, String arrivalCountry,
-                           List<ModeOfTransportation> modeOfTransportationList) {
-        this.departureTimestamp = new Date(departureTimestamp.getTime());
+                    Double departureLongitude, String departureName,
+                    String departureCity, String departureStreet, String departurePostalCode,
+                    String departureCountry, Date arrivalTimestamp, Double arrivalLatitude,
+                    Double arrivalLongitude, String arrivalName,
+                    String arrivalCity, String arrivalStreet,
+                    String arrivalPostalCode, String arrivalCountry,
+                    List<ModeOfTransportation> modeOfTransportationList) {
+        this.departureTimestamp = departureTimestamp == null
+                ? null : new Date(departureTimestamp.getTime());
         this.departureLatitude = departureLatitude;
         this.departureLongitude = departureLongitude;
         this.departureName = departureName;
@@ -66,7 +67,8 @@ public class SearchTripEvent {
         this.departureStreet = departureStreet;
         this.departurePostalCode = departurePostalCode;
         this.departureCountry = departureCountry;
-        this.arrivalTimestamp = new Date(arrivalTimestamp.getTime());
+        this.arrivalTimestamp = arrivalTimestamp == null
+                ? null : new Date(arrivalTimestamp.getTime());
         this.arrivalCity = arrivalCity;
         this.arrivalLatitude = arrivalLatitude;
         this.arrivalLongitude = arrivalLongitude;
@@ -83,7 +85,7 @@ public class SearchTripEvent {
      * @return the departure timestamp
      */
     public Date getDepartureTimestamp() {
-        return new Date(departureTimestamp.getTime());
+        return departureTimestamp == null ? null : new Date(departureTimestamp.getTime());
     }
 
     /**
@@ -155,7 +157,7 @@ public class SearchTripEvent {
      * @return the arrival timestamp
      */
     public Date getArrivalTimestamp() {
-        return new Date(arrivalTimestamp.getTime());
+        return arrivalTimestamp == null ? null : new Date(arrivalTimestamp.getTime());
     }
 
     /**
@@ -260,7 +262,8 @@ public class SearchTripEvent {
          * @return the builder
          */
         public SearchTripEventBuilder setDepartureTimestamp(Date departureTimestamp) {
-            this.departureTimestamp = new Date(departureTimestamp.getTime());
+            this.departureTimestamp = departureTimestamp == null
+                    ? null : new Date(departureTimestamp.getTime());
             return this;
         }
 
@@ -348,7 +351,8 @@ public class SearchTripEvent {
          * @return the builder
          */
         public SearchTripEventBuilder setArrivalTimestamp(Date arrivalTimestamp) {
-            this.arrivalTimestamp = new Date(arrivalTimestamp.getTime());
+            this.arrivalTimestamp = arrivalTimestamp == null
+                    ? null : new Date(arrivalTimestamp.getTime());
             return this;
         }
 

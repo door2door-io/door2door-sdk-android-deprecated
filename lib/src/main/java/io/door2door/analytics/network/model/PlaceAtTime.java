@@ -16,7 +16,7 @@ public class PlaceAtTime {
      * @return the timestamp
      */
     public Date getTimestamp() {
-        return new Date(timestamp.getTime());
+        return timestamp == null ? null : new Date(timestamp.getTime());
     }
 
     /**
@@ -25,7 +25,7 @@ public class PlaceAtTime {
      * @param timestamp the timestamp
      */
     public void setTimestamp(Date timestamp) {
-        this.timestamp = new Date(timestamp.getTime());
+        this.timestamp = timestamp == null ? null : new Date(timestamp.getTime());
     }
 
     /**

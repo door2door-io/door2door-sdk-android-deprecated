@@ -180,7 +180,7 @@ Event indicating that the user performed a search of a trip. Instance can be cre
 		<td>modeOfTransportation</td>
 		<td>ModeOfTransportation enum, see javadoc for more information</td>
 		<td>No</td>
-		<td>The mode of transport selected by the user for the current search. The event supports multiple parameters, each can be added using the addModeOfTransportation(ModeOfTransportation modeOfTransportation) method in the builder.</td>
+		<td>The mode of transport selected by the user for the current search. The event supports multiple parameters, each can be added using the addModeOfTransportation(ModeOfTransportation modeOfTransportation) method in the builder. Available modes of transportation: WALK, PUBLIC_TRANSPORT, CAR_SHARING, BIKE_SHARING, TAXI, PRIVATE_BIKE, RIDE_SHARING and OTHER.</td>
 	</tr>
 	<tr>
 </table>
