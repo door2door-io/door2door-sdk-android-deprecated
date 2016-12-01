@@ -25,7 +25,7 @@ public class NetworkDependencyManager {
 
     // external dependencies
     private final Gson gson;
-    private final ModelMapper mapperModule;
+    private final ModelMapper modelMapper;
     private final InitializationParameters initializationParameters;
 
     // public dependencies
@@ -42,14 +42,14 @@ public class NetworkDependencyManager {
      * Instantiates a new Network dependency manager.
      *
      * @param initializationParameters the initialization parameters
-     * @param mapperModule             the mapper module
+     * @param modelMapper             the mapper module
      * @param gson                     the gson
      */
     public NetworkDependencyManager(InitializationParameters initializationParameters,
-                                    ModelMapper mapperModule,
+                                    ModelMapper modelMapper,
                                     Gson gson) {
         this.gson = gson;
-        this.mapperModule = mapperModule;
+        this.modelMapper = modelMapper;
         this.initializationParameters = initializationParameters;
     }
 
@@ -60,7 +60,7 @@ public class NetworkDependencyManager {
      */
     public HttpStack getHttpStack() {
         if (httpStack == null) {
-            httpStack = new HttpStack(getRetrofitService(), mapperModule);
+            httpStack = new HttpStack(getRetrofitService(), modelMapper);
         }
         return httpStack;
     }
