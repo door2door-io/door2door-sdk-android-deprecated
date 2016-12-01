@@ -65,12 +65,7 @@ public class NetworkDependencyManager {
         return httpStack;
     }
 
-    /**
-     * Gets retrofit service.
-     *
-     * @return the retrofit service
-     */
-    public RetrofitService getRetrofitService() {
+    private RetrofitService getRetrofitService() {
         if (retrofitService == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(getNetworkConfigurator().getBaseUrlWithVersion())
