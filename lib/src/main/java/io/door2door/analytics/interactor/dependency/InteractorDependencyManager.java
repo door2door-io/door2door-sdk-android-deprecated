@@ -36,7 +36,6 @@ public class InteractorDependencyManager {
         this.validator = validator;
     }
 
-
     /**
      * Gets mobility analytics interactor.
      *
