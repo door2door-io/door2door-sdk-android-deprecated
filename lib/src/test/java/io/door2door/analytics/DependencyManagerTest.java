@@ -10,6 +10,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.base.DependencyManager;
 import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 

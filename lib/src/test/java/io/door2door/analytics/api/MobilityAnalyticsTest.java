@@ -6,7 +6,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import io.door2door.analytics.DependencyManager;
+import io.door2door.analytics.base.DependencyManager;
 import io.door2door.analytics.api.model.SearchTripEvent;
 import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
