@@ -6,7 +6,7 @@ import android.content.Context;
 import io.door2door.analytics.api.exception.ValidationException;
 import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.DependencyManager;
+import io.door2door.analytics.base.DependencyManager;
 
 /**
  * Class responsible interaction by the integrators of the SDK.

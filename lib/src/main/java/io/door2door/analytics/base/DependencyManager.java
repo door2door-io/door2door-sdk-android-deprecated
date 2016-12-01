@@ -1,4 +1,4 @@
-package io.door2door.analytics;
+package io.door2door.analytics.base;
 
 
 import android.content.Context;
