@@ -21,10 +21,8 @@ public class DependencyManager {
     private final Context context;
     private final InitializationParameters initializationParameters;
 
-    // base dependencies
+    // private dependencies
     private BaseDependencyManager baseDependencyManager;
-
-    // mapper dependencies
     private MapperDependencyManager mapperDependencyManager;
     private NetworkDependencyManager networkDependencyManager;
     private ValidatorDependencyManager validatorDependencyManager;
