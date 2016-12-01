@@ -27,9 +27,3 @@ android {
 
 apply from: '../buildsystem/dependencies.gradle'
 apply from: '../buildsystem/javadoc.gradle'
-
-
-
-
-
-
