@@ -4,7 +4,6 @@ package io.door2door.analytics.base;
 import android.content.Context;
 
 import io.door2door.analytics.api.model.InitializationParameters;
-import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.base.dependency.BaseDependencyManager;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.interactor.dependency.InteractorDependencyManager;
