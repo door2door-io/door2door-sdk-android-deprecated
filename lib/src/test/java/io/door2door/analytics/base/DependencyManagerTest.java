@@ -1,4 +1,4 @@
-package io.door2door.analytics;
+package io.door2door.analytics.base;
 
 import android.app.Application;
 
@@ -10,8 +10,6 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import io.door2door.analytics.api.model.InitializationParameters;
-import io.door2door.analytics.base.DependencyManager;
-import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -20,7 +18,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
  * Test class for the dependency manager.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 21)
+@Config(sdk = 23, manifest = Config.NONE)
 public class DependencyManagerTest {
 
     private DependencyManager dependencyManager;

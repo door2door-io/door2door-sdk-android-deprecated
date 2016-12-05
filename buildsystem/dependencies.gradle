@@ -3,7 +3,7 @@ ext {
     retrofitVersion = '2.1.0'
     rxVersion = '1.2.1'
     springVersion = '4.3.2.RELEASE'
-    robolectricVersion = '3.1.4'
+    okhttp3Version = '3.4.1'
 }
 
 dependencies {
@@ -11,7 +11,7 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
     compile "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
-    compile "com.squareup.okhttp3:logging-interceptor:3.4.1"
+    compile "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
 
     // RX Android
     compile "io.reactivex:rxandroid:${rxVersion}"
@@ -21,19 +21,23 @@ dependencies {
     // JUnit test dependencies
     testCompile 'junit:junit:4.12'
 
-    // For testing classes with Android components (example logcat)
-    testCompile "org.robolectric:robolectric:3.1.2"
-
     // for the nice assertThat() statements
     testCompile 'org.assertj:assertj-core:3.5.2'
 
     // for mocking the dependencies
-    testCompile "org.mockito:mockito-core:2.2.3"
+    testCompile 'org.mockito:mockito-core:2.2.3'
 
     // for mocking the Android SDK
-    testCompile "org.robolectric:robolectric:${robolectricVersion}"
+    testCompile 'org.robolectric:robolectric:3.1.4'
 
     // for injecting into private values for testing
     testCompile "org.springframework:spring-test:${springVersion}"
     testCompile "org.springframework:spring-aop:${springVersion}"
+
+    // for mock web server used by the integration tests
+    testCompile "com.squareup.okhttp3:mockwebserver:${okhttp3Version}"
+
+    // for matching JSONs not as strings but comparing the values (ignoring \n and similar chars)
+    testCompile 'org.skyscreamer:jsonassert:1.4.0'
+
 }

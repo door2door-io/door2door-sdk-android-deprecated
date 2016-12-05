@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
  * Test class for {@link MobilityAnalyticsInteractor}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 23)
+@Config(sdk = 23, manifest = Config.NONE)
 public class MobilityAnalyticsInteractorTest {
 
     private MobilityAnalyticsInteractor mobilityAnalyticsInteractor;
