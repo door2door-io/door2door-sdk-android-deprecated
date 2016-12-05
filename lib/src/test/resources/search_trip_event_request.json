@@ -1,0 +1,38 @@
+{
+   "action":"search",
+   "actor":{
+      "client":{
+         "platform":"android"
+      }
+   },
+   "trip":{
+      "mode_of_transportation":[
+         "bike_sharing",
+         "car_sharing"
+      ],
+      "departure":{
+         "timestamp":"2016-11-14T12:35:12+0000",
+         "place":{
+            "latitude":52.529919,
+            "longitude":13.403067,
+            "name":"Door2Door HQ",
+            "city":"Berlin",
+            "street":"Torstrasse 109",
+            "postal_code":"10119",
+            "country":"Germany"
+         }
+      },
+      "arrival":{
+         "timestamp":"2016-11-14T12:35:32+0000",
+         "place":{
+            "latitude":52.522258,
+            "longitude":13.412678,
+            "name":"Alexanderplatz",
+            "city":"BerlinCity",
+            "street":"AlexanderplatzStreet",
+            "postal_code":"10178",
+            "country":"GermanyCountry"
+         }
+      }
+   }
+}

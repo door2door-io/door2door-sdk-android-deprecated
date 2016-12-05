@@ -18,7 +18,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
  * Test class for {@link Logger}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 23)
+@Config(sdk = 23, manifest = Config.NONE)
 public class LoggerTest {
 
     private Logger logger;
