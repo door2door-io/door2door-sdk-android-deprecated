@@ -23,6 +23,10 @@ android {
             testCoverageEnabled = true
         }
     }
+    sourceSets {
+        test.java.srcDirs += 'src/integrationTest/java'
+        test.resources.srcDirs += 'src/integrationTest/resources'
+    }
 }
 
 apply from: '../buildsystem/dependencies.gradle'
