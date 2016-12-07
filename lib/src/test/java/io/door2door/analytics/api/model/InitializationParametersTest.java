@@ -44,4 +44,32 @@ public class InitializationParametersTest {
         assertThat(initializationParameters.isLoggerEnabled()).isEqualTo(false);
     }
 
+    @Test
+    public void shouldGetProductionBaseUrl() {
+        // given
+        builder = new InitializationParameters.InitializationParametersBuilder()
+                .setEnvironment(Environment.PRODUCTION);
+        InitializationParameters initializationParameters = builder.build();
+
+        // when
+        String baseUrl = initializationParameters.getBaseUrl();
+
+        // then
+        assertThat(baseUrl).isEqualTo("https://events.d2di.net");
+    }
+
+    @Test
+    public void shouldGetTestBaseUrl() {
+        // given
+        builder = new InitializationParameters.InitializationParametersBuilder()
+                .setEnvironment(Environment.TEST);
+        InitializationParameters initializationParameters = builder.build();
+
+        // when
+        String baseUrl = initializationParameters.getBaseUrl();
+
+        // then
+        assertThat(baseUrl).isEqualTo("https://events-dev.d2di.net");
+    }
+
 }

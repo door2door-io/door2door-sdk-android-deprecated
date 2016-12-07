@@ -1,19 +1,19 @@
 package io.door2door.analytics.api;
 
-import android.content.Context;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.api.model.InitializationParameters;
+import io.door2door.analytics.base.DependencyManager;
+import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
-import io.door2door.analytics.base.logger.Logger;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Test class for {@link MobilityAnalytics}.
@@ -23,6 +23,8 @@ public class MobilityAnalyticsTest {
     private MobilityAnalytics mobilityAnalytics;
 
     @Mock
+    private DependencyManager dependencyManager;
+    @Mock
     private MobilityAnalyticsInteractor mobilityAnalyticsInteractor;
     @Mock
     private Logger logger;
@@ -30,11 +32,15 @@ public class MobilityAnalyticsTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mobilityAnalytics = new TestMobilityAnalytics(null, null);
+        mobilityAnalytics = new MobilityAnalytics(null, null);
+        ReflectionTestUtils.setField(mobilityAnalytics, "dependencyManager", dependencyManager);
+        when(dependencyManager.getLogger()).thenReturn(logger);
+        when(dependencyManager.getMobilityAnalyticsInteractor())
+                .thenReturn(mobilityAnalyticsInteractor);
     }
 
     @Test
-    public void shouldRecordEvent() {
+    public void shouldRecordSearchTripEventEvent() {
         // given
         SearchTripEvent event = mock(SearchTripEvent.class);
 
@@ -43,29 +49,7 @@ public class MobilityAnalyticsTest {
 
         // then
         verify(mobilityAnalyticsInteractor).processTripEvent(event);
-    }
-
-    /**
-     * MobilityAnalytics class with injected test dependencies.
-     */
-    private class TestMobilityAnalytics extends MobilityAnalytics {
-
-        /**
-         * Constructor.
-         *
-         * @param context the context
-         * @param initializationParameters a wrapper object for all the parameters that can be set
-         */
-        TestMobilityAnalytics(Context context, InitializationParameters initializationParameters) {
-            super(context, initializationParameters);
-        }
-
-        @Override
-        protected void injectDependencies(Context context,
-                                          InitializationParameters initializationParameters) {
-            mobilityAnalyticsInteractor = MobilityAnalyticsTest.this.mobilityAnalyticsInteractor;
-            logger = MobilityAnalyticsTest.this.logger;
-        }
+        verify(logger).d("MobilityAnalytics", "Search trip event about to be recorded");
     }
 
 }

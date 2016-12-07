@@ -9,6 +9,8 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLog;
 
+import io.door2door.analytics.base.Logger;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
@@ -16,7 +18,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
  * Test class for {@link Logger}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 23)
+@Config(sdk = 23, manifest = Config.NONE)
 public class LoggerTest {
 
     private Logger logger;

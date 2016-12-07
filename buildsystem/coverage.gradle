@@ -20,7 +20,6 @@ project.afterEvaluate {
                                '**/*$ViewBinder*.*',
                                '**/BuildConfig.*',
                                '**/Manifest*.*',
-                               '**/dagger/**',
                                '**/*MembersInjector.class',
                                '**/*Factory.class',
                                '**/*Component*']

@@ -9,7 +9,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.base.logger.Logger;
+import io.door2door.analytics.base.Logger;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.validator.Validator;
 import rx.Observable;
@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
  * Test class for {@link MobilityAnalyticsInteractor}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 23)
+@Config(sdk = 23, manifest = Config.NONE)
 public class MobilityAnalyticsInteractorTest {
 
     private MobilityAnalyticsInteractor mobilityAnalyticsInteractor;

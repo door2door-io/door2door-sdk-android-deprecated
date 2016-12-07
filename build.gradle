@@ -8,8 +8,6 @@ buildscript {
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.1.1"
         // needed for sending code coverage to coveralls
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.3"
-        // Android APT plugin needed for Dagger 2
-        classpath "com.neenbedankt.gradle.plugins:android-apt:1.8"
     }
 }
 

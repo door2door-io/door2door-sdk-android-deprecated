@@ -1,5 +1,8 @@
 package io.door2door.analytics.api.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.door2door.analytics.base.model.Environment;
 
 /**
@@ -7,10 +10,17 @@ import io.door2door.analytics.base.model.Environment;
  */
 public class InitializationParameters {
 
+    private static final Map<Environment, String> BASE_URLS = new HashMap<>();
+
     private final boolean loggerEnabled;
     private final String applicationName;
     private final String versionName;
     private final Environment environment;
+
+    static {
+        BASE_URLS.put(Environment.TEST, "https://events-dev.d2di.net");
+        BASE_URLS.put(Environment.PRODUCTION, "https://events.d2di.net");
+    }
 
     /**
      * Instantiates a new Initialization parameters.
@@ -62,6 +72,15 @@ public class InitializationParameters {
      */
     public Environment getEnvironment() {
         return environment;
+    }
+
+    /**
+     * Gets base url.
+     *
+     * @return the base url
+     */
+    public String getBaseUrl() {
+        return BASE_URLS.get(environment);
     }
 
     /**

@@ -2,8 +2,6 @@ package io.door2door.analytics.base;
 
 import java.util.UUID;
 
-import io.door2door.analytics.base.logger.Logger;
-
 /**
  * Class responsible for retrieving device id.
  */
