@@ -4,8 +4,14 @@
 In your project add the following dependency:
 
     compile 'io.door2door:mobility-analytics-sdk:[LATEST_VERSION]'
-##### Initializing the SDK 
+    
+    
+##### Proguard configuraiton (only if proguard is used)
+In you prohouard configuration add the following line:
 
+    -keep class io.door2door.analytics.** { *; }
+
+##### Initializing the SDK 
 Once the SDK dependency is added to the project, the next step is to initialize it. The initialization is done by creating an instance of the MobilityAnalytics class using its constructor:
 
     MobilityAnalytics(Context context, InitializationParameters initializationParameters)

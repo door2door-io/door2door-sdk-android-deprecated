@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply from: '../buildsystem/deployment.gradle'
 apply from: '../buildsystem/ci.gradle'
 apply from: '../buildsystem/coverage.gradle'
 apply from: '../buildsystem/static_analysis.gradle'
@@ -9,7 +8,7 @@ android {
     buildToolsVersion "25.0.0"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName rootProject.computedVersion
@@ -31,3 +30,4 @@ android {
 
 apply from: '../buildsystem/dependencies.gradle'
 apply from: '../buildsystem/javadoc.gradle'
+apply from: '../buildsystem/deployment.gradle'
