@@ -51,14 +51,10 @@ task sourceJar(type: Jar) {
     classifier "source"
 }
 
-task androidJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-}
-
 task androidJavadocsJar(type: Jar) {
     classifier = 'javadoc'
-    baseName = artifactId
-    from androidJavadocs.destinationDir
+    baseName = project.artifactId
+    from javadoc.destinationDir
 }
 
 task androidSourcesJar(type: Jar) {
