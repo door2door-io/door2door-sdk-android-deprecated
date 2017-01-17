@@ -24,6 +24,8 @@ publishing {
             groupId = project.groupId
             artifactId project.artifactId
             version = rootProject.computedVersion
+            artifact(sourceJar)
+            artifact(androidJavadocsJar)
             artifact "${project.buildDir}/outputs/aar/${project.name}-release.aar"
 
             //The publication doesn't know about our dependencies, so we have to manually add them to the pom
@@ -43,3 +45,24 @@ publishing {
 }
 
 artifactoryPublish.dependsOn build
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "source"
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+}
+
+task androidJavadocsJar(type: Jar) {
+    classifier = 'javadoc'
+    baseName = artifactId
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    baseName = project.artifactId
+    from android.sourceSets.main.java.srcDirs
+}
