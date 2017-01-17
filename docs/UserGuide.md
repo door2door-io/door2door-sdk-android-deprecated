@@ -6,7 +6,7 @@ In your project add the following dependency:
     compile 'io.door2door:mobility-analytics-sdk:[LATEST_VERSION]'
     
     
-#### Proguard configuraiton (only if proguard is used)
+##### Proguard configuraiton (only if proguard is used)
 In you prohouard configuration add the following line:
 
     -keep class io.door2door.analytics.** { *; }
