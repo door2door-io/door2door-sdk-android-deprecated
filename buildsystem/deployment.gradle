@@ -48,7 +48,7 @@ artifactoryPublish.dependsOn build
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier "source"
+    classifier "sources"
 }
 
 task androidJavadocsJar(type: Jar) {
