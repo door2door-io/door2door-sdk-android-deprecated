@@ -218,4 +218,4 @@ Example:
 The javadoc is available at the docs/javadoc directory.
 
 ### Example 
-For an example on how to use the SDK see the [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-android).
+For an example on how to use the SDK see the [door2door-example-android](https://github.com/door2door-io/door2door-example-android).
