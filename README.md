@@ -72,7 +72,7 @@ Here are all available initialization parameters and their default values:
 	</tr>
 </table>
 
-It is recommended to create only one instance of the MobilityAnalytics object (have it as a singleton) and use it when recording events. If you are using a dependency injection framework, you should mark the MobilityAnalytics dependency as singleton. If you do not, you can have it as an application singleton in your application class. If you are confused by this, have a look application class of the provided [mobility-analytics-example-android](https://github.com/door2door-io/mobility-analytics-example-android) (it sets up MobilityAnalytics as application singleton).
+It is recommended to create only one instance of the MobilityAnalytics object (have it as a singleton) and use it when recording events. If you are using a dependency injection framework, you should mark the MobilityAnalytics dependency as singleton. If you do not, you can have it as an application singleton in your application class. If you are confused by this, have a look application class of the provided [door2door-example-android](https://github.com/door2door-io/door2door-example-android) (it sets up MobilityAnalytics as application singleton).
 
 ##### Using the SDK to recording events
 To record events you need reference to the MobilityAnalytics object. It contains a recordEvent(event) method for every type of event you can record:
