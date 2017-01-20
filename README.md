@@ -14,7 +14,7 @@ An Android SDK for using the Door2Door mobility analytics.
 * [License](#license)
 
 ## Technical Requirements
-The minimal supported Android version of the SDK is 4.0 (API level 14)
+The minimal supported Android version of the SDK is 4.0 (API level 14).
 
 ## Setup
 ##### Add the SDK dependency to your project
