@@ -261,4 +261,4 @@ Releases are automatically done by travis and are triggered by a commit on the m
 Note: All builds created from master on travis will be release builds (the -SNAPSHOT) section of the version is removed at build time.
 
 ## License
-For license details see [License](LICENSE)
+For license details see [License](LICENSE).
