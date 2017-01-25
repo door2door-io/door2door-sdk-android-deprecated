@@ -16,24 +16,26 @@ An Android SDK for using the Door2Door mobility analytics.
 The minimal supported Android version of the SDK is 4.0 (API level 14).
 
 ## Setup
-##### Add the SDK dependency to your project
-In your project add the following dependency:
+##### Adding the SDK dependency to  a project
+Add the following dependency to the project:
 
     compile 'io.door2door:mobility-analytics-sdk:[LATEST_VERSION]'
 
 
-##### Proguard configuraiton (only if proguard is used)
-In you prohouard configuration add the following line:
+##### ProGuard configuration (only if ProGuard is being used)
+
+
+Add the following line in the ProGuard configuration:
 
     -keep class io.door2door.analytics.** { *; }
 
 ## Guide
-Once the SDK dependency is added to the project, the next step is to initialize it. The initialization is done by creating an instance of the MobilityAnalytics class using its constructor:
+Once the SDK dependency has been added to the project, it must be initialized. To initialize the SDK, create an instance of the MobilityAnalytics class using its constructor:
 
     MobilityAnalytics(Context context, InitializationParameters initializationParameters)
 
 For the context parameter just provide the application context. InitializationParameters is a POJO object containing the configuration values which will be used during the initialization of the SDK.
-You can create an instance of it by using its builder. An example could look like this:
+ Instances of it can be created by using its Builder. An example is shown below:
 
     InitializationParameters initializationParameters = new InitializationParameters.InitializationParametersBuilder()
                             .setApplicationName("SimpleExample")
@@ -56,7 +58,7 @@ Here are all available initialization parameters and their default values:
 		<td>loggerEnabled</td>
 		<td>boolean</td>
 		<td>true</td>
-		<td>Flag for enabling/disabling the logs coming from the library. The logs can be useful for debugging during the development, it is recommended to disable the logging for production.</td>
+		<td>Flag for enabling/disabling the logs coming from the library. The logs can be useful for debugging during the development. It is recommended to disable the logging for production.</td>
 	</tr>
 	<tr>
 		<td>applicationName</td>
@@ -78,21 +80,21 @@ Here are all available initialization parameters and their default values:
 	</tr>
 </table>
 
-It is recommended to create only one instance of the MobilityAnalytics object (have it as a singleton) and use it when recording events. If you are using a dependency injection framework, you should mark the MobilityAnalytics dependency as singleton. If you do not, you can have it as an application singleton in your application class. If you are confused by this, have a look application class of the provided [door2door-example-android](https://github.com/door2door-io/door2door-example-android) (it sets up MobilityAnalytics as application singleton).
+It is recommended to create only one instance of the MobilityAnalytics object (have it as a singleton) and use it when recording events. If a dependency injection framework is being used, MobilityAnalytics dependency should be marked as a singleton.Otherwise, it can be used as an application singleton in the application class. If  further assistance is required, refer to the application class of the provided [door2door-example-android](https://github.com/door2door-io/door2door-example-android) (it sets up MobilityAnalytics as application singleton).
 
 ##### Using the SDK to recording events
-To record events you need reference to the MobilityAnalytics object. It contains a recordEvent(event) method for every type of event you can record:
+To record events, a reference to the MobilityAnalytics object is needed. It contains a recordEvent(event) method for every type of event  that can be recorded:
 
     mobilityAnalytics.recordEvent(event);
 
-For creating the appropriate event object, you can use the provided builders. Examples are provided for each type of event in the next section.
+For creating the appropriate event object, the provided Builders can be used. Examples are provided for each type of event in the next section.
 
 ## Reference
 The mobility analytics supports the following events:
 
 #### SearchTripEvent
 
-Event indicating that the user performed a search of a trip. Instance can be created using the SearchTripEvent.SearchTripEventBuilder builder. It has the following properties:
+Event indicating that the user performed a search of a trip. Instance can be created using the SearchTripEvent.SearchTripEventBuilder Builder. It has the following properties:
 
 
 
@@ -202,7 +204,7 @@ Event indicating that the user performed a search of a trip. Instance can be cre
 		<td>modeOfTransportation</td>
 		<td>ModeOfTransportation enum, see javadoc for more information</td>
 		<td>No</td>
-		<td>The mode of transport selected by the user for the current search. The event supports multiple parameters, each can be added using the addModeOfTransportation(ModeOfTransportation modeOfTransportation) method in the builder. Available modes of transportation: WALK, PUBLIC_TRANSPORT, CAR_SHARING, BIKE_SHARING, TAXI, PRIVATE_BIKE, RIDE_SHARING and OTHER.</td>
+		<td>The mode of transport selected by the user for the current search. The event supports multiple parameters, each can be added using the addModeOfTransportation(ModeOfTransportation modeOfTransportation) method in the Builder. Available modes of transportation: WALK, PUBLIC_TRANSPORT, CAR_SHARING, BIKE_SHARING, TAXI, PRIVATE_BIKE, RIDE_SHARING and OTHER.</td>
 	</tr>
 	<tr>
 </table>
@@ -231,15 +233,15 @@ Example:
                     .build();
 
 ### JavaDoc
-The javadoc is available at the docs/javadoc directory.
+The JavaDoc is available at the docs/javadoc directory.
 
 ### Example
-For an example on how to use the SDK see the [door2door-example-android](https://github.com/door2door-io/door2door-example-android).
+For an example on how to use the SDK,refer to [door2door-example-android](https://github.com/door2door-io/door2door-example-android).
 
 ## Developer Guide
-The goal of this is to provide all the information a new developer would need to start with the development. When using it if for some reason you need some additional information, please make sure that this README.md file is updated.
+The goal of this guide is to provide all the information a new developer would need when starting  development. If additional information is required, please ensure this README.md file is updated.
 ### Git workflow
-We are using the gitflow. More information on how gitflow works can be found [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+Door2Door uses gitflow. More information on how gitflow works can be found [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
 ### Building
 To build the project in the command line run:
 
@@ -247,17 +249,17 @@ To build the project in the command line run:
 ./gradlew clean build
 ```
 
-Building this way also makes sure that all the tests and static analysis checks pass.
+Using this method also ensures that all the tests and static analysis checks pass.
 
 ### Releasing
-Releases are automatically done by travis and are triggered by a commit on the master branch. The steps to folow when creating a release are:
+Releases are automatically carried out by Travis and are triggered by a commit on the Master branch. The steps to follow when creating a release are:
 
  * Create a release branch.
  * On the develop branch bump the version ot the next one
- * Once everything is OK merge the release branch back to master and develop and this will trigger the travis job that creates the release.
+ * Once everything is complete, merge the release branch back to Master and develop. This will trigger the Travis job that creates the release.
  * Make sure to have a git tag of the released version
 
-Note: All builds created from master on travis will be release builds (the -SNAPSHOT) section of the version is removed at build time.
+Note: All builds created from Master on Travis will be release builds. (the -SNAPSHOT) section of the version is removed at build time.
 
 ## License
 For license details see [License](LICENSE).
