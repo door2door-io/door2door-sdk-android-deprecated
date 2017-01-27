@@ -10,6 +10,7 @@ An Android SDK for using the Door2Door mobility analytics.
 * [Setup](#setup)
 * [Guide](#guide)
 * [Reference](#reference)
+* [Developer Guide](#developer-guide)
 * [License](#license)
 
 ## Technical Requirements
