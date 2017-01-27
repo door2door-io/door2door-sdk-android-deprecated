@@ -6,16 +6,16 @@
 An Android SDK for using the Door2Door mobility analytics.
 
 ##Table of contents
-* [Technical requirements](#technical-requirements)
-* [Setup](#setup)
-* [Guide](#guide)
-* [Reference](#reference)
-* [License](#license)
+1. [Technical requirements] (#1-technical-requirements)
+2. [Setup] (#2-setup)
+3. [Guide] (#3-guide)
+4. [Reference] (#4-reference)
+5. [License] (#5-license)
 
-## Technical Requirements
+## 1. Technical Requirements
 The minimal supported Android version of the SDK is 4.0 (API level 14).
 
-## Setup
+## 2. Setup
 ##### Adding the SDK dependency to  a project
 Add the following dependency to the project:
 
@@ -29,7 +29,7 @@ Add the following line in the ProGuard configuration:
 
     -keep class io.door2door.analytics.** { *; }
 
-## Guide
+## 3. Guide
 Once the SDK dependency has been added to the project, it must be initialized. To initialize the SDK, create an instance of the MobilityAnalytics class using its constructor:
 
     MobilityAnalytics(Context context, InitializationParameters initializationParameters)
@@ -89,7 +89,7 @@ To record events, a reference to the MobilityAnalytics object is needed. It cont
 
 For creating the appropriate event object, the provided Builders can be used. Examples are provided for each type of event in the next section.
 
-## Reference
+## 4. Reference
 The mobility analytics supports the following events:
 
 #### SearchTripEvent
@@ -261,5 +261,5 @@ Releases are automatically carried out by Travis and are triggered by a commit o
 
 Note: All builds created from Master on Travis will be release builds. (the -SNAPSHOT) section of the version is removed at build time.
 
-## License
+## 5. License
 For license details see [License](LICENSE).
