@@ -1,4 +1,4 @@
-package io.door2door.analytics.mapper;
+package io.door2door.analytics.network.mapper;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,11 +26,11 @@ import static org.mockito.Mockito.when;
 
 
 /**
- * Test class for {@link ModelMapper}.
+ * Test class for {@link NetworkModelMapper}.
  */
-public class ModelMapperTest {
+public class NetworkModelMapperTest {
 
-    private ModelMapper modelMapper;
+    private NetworkModelMapper networkModelMapper;
 
     @Mock
     private DeviceIdRetriever deviceIdRetriever;
@@ -41,7 +41,7 @@ public class ModelMapperTest {
         InitializationParameters initializationParameters =
                 DummyModelsCreatorUtil.getDummyInitializationParametersBuilder()
                         .build();
-        modelMapper = new ModelMapper(initializationParameters, deviceIdRetriever);
+        networkModelMapper = new NetworkModelMapper(initializationParameters, deviceIdRetriever);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ModelMapperTest {
         when(deviceIdRetriever.getDeviceId()).thenReturn(deviceId);
 
         // when
-        TripRequest eventRequest = modelMapper.mapSearchTripEventToTripEventRequest(event);
+        TripRequest eventRequest = networkModelMapper.mapSearchTripEventToTripEventRequest(event);
 
         // then
         assertThat(eventRequest.getAction()).isEqualTo(Action.SEARCH);
@@ -107,7 +107,7 @@ public class ModelMapperTest {
         when(deviceIdRetriever.getDeviceId()).thenReturn(deviceId);
 
         // when
-        TripRequest eventRequest = modelMapper.mapSearchTripEventToTripEventRequest(event);
+        TripRequest eventRequest = networkModelMapper.mapSearchTripEventToTripEventRequest(event);
 
         // then
         assertThat(eventRequest.getAction()).isEqualTo(Action.SEARCH);

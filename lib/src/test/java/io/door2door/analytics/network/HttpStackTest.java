@@ -1,12 +1,12 @@
 package io.door2door.analytics.network;
 
+import io.door2door.analytics.network.mapper.NetworkModelMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import io.door2door.analytics.api.model.SearchTripEvent;
-import io.door2door.analytics.mapper.ModelMapper;
 import io.door2door.analytics.network.model.TripRequest;
 
 import static org.mockito.Mockito.mock;
@@ -23,12 +23,12 @@ public class HttpStackTest {
     @Mock
     private RetrofitService retrofitService;
     @Mock
-    private ModelMapper modelMapper;
+    private NetworkModelMapper networkModelMapper;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        httpStack = new HttpStack(retrofitService, modelMapper);
+        httpStack = new HttpStack(retrofitService, networkModelMapper);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class HttpStackTest {
         // given
         TripRequest tripRequest = new TripRequest();
         SearchTripEvent event = mock(SearchTripEvent.class);
-        when(modelMapper.mapSearchTripEventToTripEventRequest(event)).thenReturn(tripRequest);
+        when(networkModelMapper.mapSearchTripEventToTripEventRequest(event)).thenReturn(tripRequest);
 
         // when
         httpStack.sendTripEvent(event);
