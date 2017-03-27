@@ -7,7 +7,6 @@ import io.door2door.analytics.api.model.InitializationParameters;
 import io.door2door.analytics.base.dependency.BaseDependencyManager;
 import io.door2door.analytics.interactor.MobilityAnalyticsInteractor;
 import io.door2door.analytics.interactor.dependency.InteractorDependencyManager;
-import io.door2door.analytics.mapper.dependency.MapperDependencyManager;
 import io.door2door.analytics.network.dependency.NetworkDependencyManager;
 import io.door2door.analytics.validator.dependency.ValidatorDependencyManager;
 
@@ -22,7 +21,6 @@ public class DependencyManager {
 
     // private dependencies
     private BaseDependencyManager baseDependencyManager;
-    private MapperDependencyManager mapperDependencyManager;
     private NetworkDependencyManager networkDependencyManager;
     private ValidatorDependencyManager validatorDependencyManager;
     private InteractorDependencyManager interactorDependencyManager;
@@ -60,9 +58,8 @@ public class DependencyManager {
         if (networkDependencyManager == null) {
             networkDependencyManager = new NetworkDependencyManager(
                     initializationParameters,
-                    getMapperDependencyManager().getModelMapper(),
-                    getBaseDependencyManager().getGson()
-            );
+                    getBaseDependencyManager().getGson(),
+                    getBaseDependencyManager().getDeviceIdRetriever());
         }
         return networkDependencyManager;
     }
@@ -79,15 +76,6 @@ public class DependencyManager {
             validatorDependencyManager = new ValidatorDependencyManager();
         }
         return validatorDependencyManager;
-    }
-
-    private MapperDependencyManager getMapperDependencyManager() {
-        if (mapperDependencyManager == null) {
-            mapperDependencyManager = new MapperDependencyManager(
-                    initializationParameters,
-                    getBaseDependencyManager().getDeviceIdRetriever());
-        }
-        return mapperDependencyManager;
     }
 
     private InteractorDependencyManager getInteractorDependencyManager() {
