@@ -40,6 +40,7 @@ For the context parameter just provide the application context. InitializationPa
 
     InitializationParameters initializationParameters = new InitializationParameters.InitializationParametersBuilder()
                             .setApplicationName("SimpleExample")
+                            .setAuthorizationKey("de99a0adeefac13bbd23949b0ade7eea1cfcbc3a57e6d589bcbcc5be51da0a8f")
                             .setVersionName("1.0.0")
                             .setLoggerEnabled(true)
                             .setEnvironment(Environment.TEST)
@@ -52,7 +53,7 @@ Here are all available initialization parameters and their default values:
 	<tr>
 		<th>Name</th>
 		<th>Type</th>
-		<th>Default value</th>
+		<th>Default</th>
 		<th>Description</th>
 	</tr>
 	<tr>
@@ -66,6 +67,12 @@ Here are all available initialization parameters and their default values:
 		<td>String</td>
 		<td>null</td>
 		<td>The name of the application that is sent to the mobility analytics backend. This value will be later associated with the data sent by the application and be visible in the mobility analytics dashboard.</td>
+	</tr>
+	<tr>
+		<td>authorizationKey</td>
+		<td>String</td>
+		<td><b>an exception is thrown<b></td>
+		<td>The authorization key for your applicaiton. Make sure it is kept in a safe place since it is a secret. This	value is required and if it is not provided, an exception will be thrown. For more info on where to get this value contact us.</td>
 	</tr>
 	<tr>
 		<td>versionName</td>
