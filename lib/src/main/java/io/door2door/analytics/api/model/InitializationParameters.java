@@ -165,7 +165,6 @@ public class InitializationParameters {
          * Build initialization parameters.
          *
          * @return the initialization parameters
-         * @throws ValidationException if the authorization key is null
          */
         public InitializationParameters build() {
             if (authorizationKey == null) {
