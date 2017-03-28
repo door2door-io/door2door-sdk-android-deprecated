@@ -61,7 +61,7 @@ public class NetworkDependencyManager {
      */
     public HttpStack getHttpStack() {
         if (httpStack == null) {
-            httpStack = new HttpStack(getRetrofitService(), getNetworkModelMapper());
+            httpStack = new HttpStack(getRetrofitService(), getNetworkModelMapper(), initializationParameters);
         }
         return httpStack;
     }

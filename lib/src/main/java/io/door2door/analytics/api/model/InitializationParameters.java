@@ -1,5 +1,6 @@
 package io.door2door.analytics.api.model;
 
+import io.door2door.analytics.api.exception.ValidationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ public class InitializationParameters {
     private final boolean loggerEnabled;
     private final String applicationName;
     private final String versionName;
+    private final String authorizationKey;
     private final Environment environment;
 
     static {
@@ -24,17 +26,18 @@ public class InitializationParameters {
 
     /**
      * Instantiates a new Initialization parameters.
-     *
-     * @param loggerEnabled   the logger enabled
+     *  @param loggerEnabled   the logger enabled
      * @param applicationName the application name
      * @param versionName     the version name
+     * @param authorizationKey the authorization key
      * @param environment     the environment
      */
-    InitializationParameters(boolean loggerEnabled, String applicationName,
-                                    String versionName, Environment environment) {
+    InitializationParameters(boolean loggerEnabled, String applicationName, String versionName,
+        String authorizationKey, Environment environment) {
         this.loggerEnabled = loggerEnabled;
         this.applicationName = applicationName;
         this.versionName = versionName;
+        this.authorizationKey = authorizationKey;
         this.environment = environment;
     }
 
@@ -84,6 +87,15 @@ public class InitializationParameters {
     }
 
     /**
+     * Gets the authorization key.
+     *
+     * @return the authorization key
+     */
+    public String getAuthorizationKey() {
+        return authorizationKey;
+    }
+
+    /**
      * The type Initialization parameters builder.
      */
     public static class InitializationParametersBuilder {
@@ -91,6 +103,7 @@ public class InitializationParameters {
         private boolean loggerEnabled = false;
         private String applicationName;
         private String versionName;
+        private String authorizationKey;
         private Environment environment = Environment.PRODUCTION;
 
         /**
@@ -129,6 +142,17 @@ public class InitializationParameters {
         /**
          * Sets environment.
          *
+         * @param authorizationKey the authorization key
+         * @return the environment
+         */
+        public InitializationParametersBuilder setAuthorizationKey(String authorizationKey) {
+          this.authorizationKey = authorizationKey;
+          return this;
+        }
+
+        /**
+         * Sets environment.
+         *
          * @param environment the environment
          * @return the environment
          */
@@ -141,10 +165,16 @@ public class InitializationParameters {
          * Build initialization parameters.
          *
          * @return the initialization parameters
+         * @throws ValidationException if the authorization key is null
          */
         public InitializationParameters build() {
-            return new InitializationParameters(loggerEnabled, applicationName, versionName,
-                    environment);
+            if (authorizationKey == null) {
+                throw new ValidationException("authorizationKey", "The authorization key must not be null when "
+                    + "building the InitializationParameters. For more information on how to get an authorization "
+                    + "key please refer to the SDK documentation.");
+            }
+            return new InitializationParameters(loggerEnabled, applicationName, versionName, authorizationKey,
+                environment);
         }
     }
 
