@@ -68,6 +68,7 @@ public class DummyModelsCreatorUtil {
                 .setApplicationName("Cool Application")
                 .setEnvironment(Environment.TEST)
                 .setLoggerEnabled(true)
-                .setVersionName("1.0.1");
+                .setVersionName("1.0.1")
+                .setAuthorizationKey("de99a0adeefac13bbd23949b0ade7eea1cfcbc3a57e6d589bcbcc5be51da0a8f");
     }
 }
