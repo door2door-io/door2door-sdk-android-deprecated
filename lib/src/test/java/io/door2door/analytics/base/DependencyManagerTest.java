@@ -2,6 +2,7 @@ package io.door2door.analytics.base;
 
 import android.app.Application;
 
+import io.door2door.analytics.DummyModelsCreatorUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,9 +27,8 @@ public class DependencyManagerTest {
     @Before
     public void setUp() {
         Application application = RuntimeEnvironment.application;
-        InitializationParameters initParams = new InitializationParameters
-                .InitializationParametersBuilder()
-                .build();
+        InitializationParameters initParams = DummyModelsCreatorUtil.getDummyInitializationParametersBuilder()
+            .build();
 
         dependencyManager = new DependencyManager(application, initParams);
     }
