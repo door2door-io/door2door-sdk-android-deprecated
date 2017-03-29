@@ -71,7 +71,7 @@ Here are all available initialization parameters and their default values:
 	<tr>
 		<td>authorizationKey</td>
 		<td>String</td>
-		<td><b>an exception is thrown<b></td>
+		<td><b>An exception is thrown<b></td>
 		<td>The authorization key for your application. Make sure it is kept in a safe place since it is a secret. This	value is required and if it is not provided, an exception will be thrown. For more info on where to get this value contact us.</td>
 	</tr>
 	<tr>
