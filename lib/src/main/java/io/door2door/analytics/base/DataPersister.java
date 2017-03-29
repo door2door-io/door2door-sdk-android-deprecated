@@ -30,7 +30,7 @@ public class DataPersister {
     }
 
     /**
-     * Save data.
+     * Saves data.
      *
      * @param key  the key
      * @param data the data
@@ -69,7 +69,7 @@ public class DataPersister {
     }
 
     /**
-     * Delete data.
+     * Deletes data.
      *
      * @param key the key
      */

@@ -2,10 +2,11 @@ package io.door2door.analytics.network.dependency;
 
 import com.google.gson.Gson;
 
+import io.door2door.analytics.base.DeviceIdRetriever;
 import java.util.concurrent.TimeUnit;
 
 import io.door2door.analytics.api.model.InitializationParameters;
-import io.door2door.analytics.mapper.ModelMapper;
+import io.door2door.analytics.network.mapper.NetworkModelMapper;
 import io.door2door.analytics.network.HttpStack;
 import io.door2door.analytics.network.NetworkConfigurator;
 import io.door2door.analytics.network.RetrofitService;
@@ -25,13 +26,14 @@ public class NetworkDependencyManager {
 
     // external dependencies
     private final Gson gson;
-    private final ModelMapper modelMapper;
     private final InitializationParameters initializationParameters;
+    private final DeviceIdRetriever deviceIdRetriever;
 
     // public dependencies
     private HttpStack httpStack;
 
     // private dependencies
+    private NetworkModelMapper networkModelMapper;
     private RetrofitService retrofitService;
     private OkHttpClient okHttpClient;
     private RxJavaCallAdapterFactory rxJavaCallAdapterFactory;
@@ -41,16 +43,15 @@ public class NetworkDependencyManager {
     /**
      * Instantiates a new Network dependency manager.
      *
-     * @param initializationParameters the initialization parameters
-     * @param modelMapper             the mapper module
+     *  @param initializationParameters the initialization parameters
      * @param gson                     the gson
+     * @param deviceIdRetriever        the device id retriever
      */
     public NetworkDependencyManager(InitializationParameters initializationParameters,
-                                    ModelMapper modelMapper,
-                                    Gson gson) {
+        Gson gson, DeviceIdRetriever deviceIdRetriever) {
         this.gson = gson;
-        this.modelMapper = modelMapper;
         this.initializationParameters = initializationParameters;
+        this.deviceIdRetriever = deviceIdRetriever;
     }
 
     /**
@@ -60,7 +61,7 @@ public class NetworkDependencyManager {
      */
     public HttpStack getHttpStack() {
         if (httpStack == null) {
-            httpStack = new HttpStack(getRetrofitService(), modelMapper);
+            httpStack = new HttpStack(getRetrofitService(), getNetworkModelMapper(), initializationParameters);
         }
         return httpStack;
     }
@@ -114,6 +115,13 @@ public class NetworkDependencyManager {
             networkConfigurator = new NetworkConfigurator(initializationParameters);
         }
         return networkConfigurator;
+    }
+
+    private NetworkModelMapper getNetworkModelMapper() {
+        if (networkModelMapper == null) {
+            networkModelMapper = new NetworkModelMapper(initializationParameters, deviceIdRetriever);
+        }
+        return networkModelMapper;
     }
 
 }

@@ -1,4 +1,4 @@
-package io.door2door.analytics.mapper;
+package io.door2door.analytics.network.mapper;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +19,7 @@ import io.door2door.analytics.network.model.Action;
 /**
  * Mapper class for mapping between models.
  */
-public class ModelMapper {
+public class NetworkModelMapper {
 
     private final InitializationParameters initializationParameters;
     private final DeviceIdRetriever deviceIdRetriever;
@@ -30,7 +30,7 @@ public class ModelMapper {
      * @param initializationParameters the initialization parameters
      * @param deviceIdRetriever the device id retriever
      */
-    public ModelMapper(InitializationParameters initializationParameters,
+    public NetworkModelMapper(InitializationParameters initializationParameters,
                        DeviceIdRetriever deviceIdRetriever) {
         this.initializationParameters = initializationParameters;
         this.deviceIdRetriever = deviceIdRetriever;
