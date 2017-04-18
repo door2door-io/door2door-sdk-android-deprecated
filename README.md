@@ -59,7 +59,7 @@ Here are all available initialization parameters and their default values:
 	<tr>
 		<td>loggerEnabled</td>
 		<td>boolean</td>
-		<td>true</td>
+		<td>false</td>
 		<td>Flag for enabling/disabling the logs coming from the library. The logs can be useful for debugging during the development. It is recommended to disable the logging for production.</td>
 	</tr>
 	<tr>
